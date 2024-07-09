@@ -1,0 +1,10 @@
+<main>
+    <app-manager-sidebar (selectSection)="onSectionSelected($event)"></app-manager-sidebar>
+    <div class="content-container">
+        <app-manager-home *ngIf="selectedSection === 'home'"></app-manager-home>
+        <app-manager-bookings *ngIf="selectedSection === 'bookings'"></app-manager-bookings>
+        <app-manager-tickets *ngIf="selectedSection === 'tickets'"></app-manager-tickets>
+        <app-manager-users *ngIf="selectedSection === 'users'"></app-manager-users>
+        <app-manager-settings *ngIf="selectedSection === 'settings'"></app-manager-settings>
+    </div>
+</main>

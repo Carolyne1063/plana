@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    display: flex;
+    gap: 12px;
+}
+.content-container{
+    padding: 10px;
+    border: 2px solid #FC1055;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}

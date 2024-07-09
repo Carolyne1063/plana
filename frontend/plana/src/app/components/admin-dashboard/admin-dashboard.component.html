@@ -1,0 +1,11 @@
+<main>
+    <app-admin-sidebar (selectSection)="onSectionSelected($event)"></app-admin-sidebar>
+    <div class="content-container">
+        <app-all-events *ngIf="selectedSection === 'events'"></app-all-events>
+        <app-all-bookings *ngIf="selectedSection === 'bookings'"></app-all-bookings>
+        <app-all-users *ngIf="selectedSection === 'users'"></app-all-users>
+        <app-admin-analytics *ngIf="selectedSection === 'analytics'"></app-admin-analytics>
+        <app-admin-settings *ngIf="selectedSection === 'settings'"></app-admin-settings>
+    </div>
+</main>
+

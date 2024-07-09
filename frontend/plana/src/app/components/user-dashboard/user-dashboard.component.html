@@ -1,0 +1,8 @@
+<main>
+    <app-user-sidebar (selectSection)="onSectionSelected($event)"></app-user-sidebar>
+    <div class="content-container">
+        <app-user-home *ngIf="selectedSection === 'home'"></app-user-home>
+        <app-user-bookings *ngIf="selectedSection === 'bookings'"></app-user-bookings>
+        <app-user-settings *ngIf="selectedSection === 'settings'"></app-user-settings>
+    </div>
+</main>
