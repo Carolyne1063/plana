@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './user-home.component.css'
 })
 export class UserHomeComponent {
+  openForm() {
+    const form = document.getElementById("bookingForm");
+    if (form) form.style.display = "block";
+    document.body.classList.add("blur");
+  }
 
+  closeForm() {
+    const form = document.getElementById("bookingForm");
+    if (form) form.style.display = "none";
+    document.body.classList.remove("blur");
+  }
 }
