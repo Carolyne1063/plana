@@ -1,1 +1,65 @@
-<p>login-register works!</p>
+<body>
+    <div class="container" id="container">
+      <div class="form-container sign-up-container" id="sign-up-container">
+        <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+          <h1 style="padding-top: 15px; color: #FC1055;">Create Account</h1>
+          <input type="text" formControlName="firstname" placeholder="First Name">
+          <div *ngIf="registerForm.get('firstname')?.invalid && (registerForm.get('firstname')?.dirty || registerForm.get('firstname')?.touched)">
+            <small *ngIf="registerForm.get('firstname')?.errors?.['required']">First Name is required.</small>
+            <small *ngIf="registerForm.get('firstname')?.errors?.['minlength']">First Name must be at least 2 characters long.</small>
+          </div>
+          <input type="text" formControlName="lastname" placeholder="Last Name">
+          <div *ngIf="registerForm.get('lastname')?.invalid && (registerForm.get('lastname')?.dirty || registerForm.get('lastname')?.touched)">
+            <small *ngIf="registerForm.get('lastname')?.errors?.['required']">Last Name is required.</small>
+            <small *ngIf="registerForm.get('lastname')?.errors?.['minlength']">Last Name must be at least 2 characters long.</small>
+          </div>
+          <input type="text" formControlName="phoneNumber" placeholder="Phone Number">
+          <div *ngIf="registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+            <small *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">Phone Number is required.</small>
+            <small *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">Phone Number must be 10 digits long.</small>
+          </div>
+          <input type="email" formControlName="email" placeholder="Email">
+          <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+            <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</small>
+          </div>
+          <input type="password" formControlName="password" placeholder="Password">
+          <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+            <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+          </div>
+          <button type="submit">Create Account</button>
+          <h5>Already have an account? <a class="ghost" id="signIn" style="color:#FC1055;"><u>Login</u></a></h5>
+        </form>
+      </div>
+      <div class="form-container sign-in-container" id="sign-in-container">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+          <h1 style="padding-bottom: 15px">Login Now</h1>
+          <input type="email" formControlName="email" placeholder="Email">
+          <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+            <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</small>
+          </div>
+          <input type="password" formControlName="password" placeholder="Password">
+          <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+          </div>
+          <a href="/reset-password" style="padding-left:150px; font-weight: bold">Forgot Your Password?</a>
+          <button type="submit">SIGN IN</button>
+          <h5>New here? <a class="ghost" id="signUp" style="color:#FC1055;"><u>Register</u></a></h5>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <img src="https://i.pinimg.com/474x/eb/95/f2/eb95f21ddc2103c80dab7e4e6782cb1f.jpg" alt="img" class="overlay-image" />
+          </div>
+          <div class="overlay-panel overlay-right">
+            <img src="https://i.pinimg.com/474x/bd/e2/30/bde2306298ebb1ba291c27624e920646.jpg" alt="IMAGE" class="overlay-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
