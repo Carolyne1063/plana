@@ -1,1 +1,116 @@
-<p>admin-analytics works!</p>
+<div class="analytics-container">
+    <h1>Event Manager Analytics</h1>
+    <div class="comparison-container">
+      <div class="manager-card">
+        <div class="manager-info">
+          <h2>John Doe</h2>
+          <p>Events Managed: 5</p>
+        </div>
+        <div class="performance-metrics">
+          <div class="metric">
+            <h3>Average Attendance</h3>
+            <p>350 / 400</p>
+          </div>
+          <div class="metric">
+            <h3>Average Empty Seats</h3>
+            <p>50</p>
+          </div>
+          <div class="metric">
+            <h3>Total Revenue</h3>
+            <p>$14,000</p>
+          </div>
+        </div>
+        <div class="comparison-bar">
+          <div class="bar fill" style="width: 80%;"></div>
+          <div class="bar-label">80% Full</div>
+        </div>
+        <button class="toggle-breakdown" (click)="toggleBreakdown('john')">View Event Breakdown</button>
+        <div class="event-breakdown" id="john-breakdown">
+          <h3>John Doe's Event Breakdown</h3>
+          <ul>
+            <li *ngFor="let event of johnEvents">
+              <h4>Event {{ event.id }}</h4>
+              <p>Attendees: {{ event.attendees }}</p>
+              <p>Empty Seats: {{ event.emptySeats }}</p>
+              <p>Revenue: ${{ event.revenue }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="manager-card">
+        <div class="manager-info">
+          <h2>Jane Smith</h2>
+          <p>Events Managed: 7</p>
+        </div>
+        <div class="performance-metrics">
+          <div class="metric">
+            <h3>Average Attendance</h3>
+            <p>500 / 600</p>
+          </div>
+          <div class="metric">
+            <h3>Average Empty Seats</h3>
+            <p>100</p>
+          </div>
+          <div class="metric">
+            <h3>Total Revenue</h3>
+            <p>$25,000</p>
+          </div>
+        </div>
+        <div class="comparison-bar">
+          <div class="bar fill" style="width: 83%;"></div>
+          <div class="bar-label">83% Full</div>
+        </div>
+        <button class="toggle-breakdown" (click)="toggleBreakdown('jane')">View Event Breakdown</button>
+        <div class="event-breakdown" id="jane-breakdown">
+          <h3>Jane Smith's Event Breakdown</h3>
+          <ul>
+            <li *ngFor="let event of janeEvents">
+              <h4>Event {{ event.id }}</h4>
+              <p>Attendees: {{ event.attendees }}</p>
+              <p>Empty Seats: {{ event.emptySeats }}</p>
+              <p>Revenue: ${{ event.revenue }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="manager-card">
+        <div class="manager-info">
+          <h2>Emily Davis</h2>
+          <p>Events Managed: 3</p>
+        </div>
+        <div class="performance-metrics">
+          <div class="metric">
+            <h3>Average Attendance</h3>
+            <p>200 / 250</p>
+          </div>
+          <div class="metric">
+            <h3>Average Empty Seats</h3>
+            <p>50</p>
+          </div>
+          <div class="metric">
+            <h3>Total Revenue</h3>
+            <p>$8,000</p>
+          </div>
+        </div>
+        <div class="comparison-bar">
+          <div class="bar fill" style="width: 80%;"></div>
+          <div class="bar-label">80% Full</div>
+        </div>
+        <button class="toggle-breakdown" (click)="toggleBreakdown('emily')">View Event Breakdown</button>
+        <div class="event-breakdown" id="emily-breakdown">
+          <h3>Emily Davis's Event Breakdown</h3>
+          <ul>
+            <li *ngFor="let event of emilyEvents">
+              <h4>Event {{ event.id }}</h4>
+              <p>Attendees: {{ event.attendees }}</p>
+              <p>Empty Seats: {{ event.emptySeats }}</p>
+              <p>Revenue: ${{ event.revenue }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
