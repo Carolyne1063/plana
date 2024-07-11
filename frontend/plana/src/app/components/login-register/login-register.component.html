@@ -2,6 +2,7 @@
     <div class="container" id="container">
       <div class="form-container sign-up-container" id="sign-up-container">
         <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+          <a style="margin-left: 320px; font-size:30px; float: right;" href="/landing" title="Go To Home"><i class="fa-solid fa-house"></i></a>
           <h1 style="padding-top: 15px; color: #FC1055;">Create Account</h1>
           <input type="text" formControlName="firstname" placeholder="First Name">
           <div *ngIf="registerForm.get('firstname')?.invalid && (registerForm.get('firstname')?.dirty || registerForm.get('firstname')?.touched)">
@@ -34,6 +35,7 @@
       </div>
       <div class="form-container sign-in-container" id="sign-in-container">
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+          <a style="margin-right: 320px; font-size:30px; float: right;" href="/landing" title="Go To Home"><i class="fa-solid fa-house"></i></a>
           <h1 style="padding-bottom: 15px">Login Now</h1>
           <input type="email" formControlName="email" placeholder="Email">
           <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
