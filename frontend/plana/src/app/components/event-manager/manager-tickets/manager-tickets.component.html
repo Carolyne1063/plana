@@ -1,1 +1,112 @@
-<p>manager-tickets works!</p>
+<!-- ticket-management.component.html -->
+<div class="ticket-management-container">
+    <header class="header">
+      <h1>Ticket Management</h1>
+      <p>Manage Tickets for Events</p>
+    </header>
+  
+    <section class="availability-section">
+      <h2>Set Ticket Availability</h2>
+      <form class="availability-form">
+        <label for="event-select">Event:</label>
+        <select id="event-select">
+          <option>Event 1</option>
+          <option>Event 2</option>
+        </select>
+  
+        <label for="total-tickets">Total Tickets:</label>
+        <input type="number" id="total-tickets" placeholder="Enter total tickets available" />
+  
+        <label for="available-tickets">Available Tickets:</label>
+        <input type="number" id="available-tickets" placeholder="Enter available tickets" />
+  
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </section>
+  
+    <section class="pricing-section">
+      <h2>Set Ticket Pricing</h2>
+      <form class="pricing-form">
+        <label for="event-pricing">Event:</label>
+        <select id="event-pricing">
+          <option>Event 1</option>
+          <option>Event 2</option>
+        </select>
+  
+        <label for="ticket-category">Ticket Category:</label>
+        <select id="ticket-category">
+          <option>Standard</option>
+          <option>VIP</option>
+        </select>
+  
+        <label for="base-price">Base Price:</label>
+        <input type="number" id="base-price" placeholder="Set base price" />
+  
+        <label for="discount">Discount (%):</label>
+        <input type="number" id="discount" placeholder="Enter discount percentage" />
+  
+        <button type="submit" class="update-pricing-btn">Update Pricing</button>
+      </form>
+    </section>
+  
+    <section class="promotion-section">
+      <h2>Create and Manage Promotions</h2>
+      <form class="promotion-form">
+        <label for="event-promotion">Event:</label>
+        <select id="event-promotion">
+          <option>Event 1</option>
+          <option>Event 2</option>
+        </select>
+  
+        <label for="promotion-name">Promotion Name:</label>
+        <input type="text" id="promotion-name" placeholder="Enter promotion name" />
+  
+        <label for="promotion-type">Promotion Type:</label>
+        <select id="promotion-type">
+          <option>Discount</option>
+          <option>Buy One Get One</option>
+        </select>
+  
+        <label for="discount-amount">Discount Amount:</label>
+        <input type="number" id="discount-amount" placeholder="Enter discount amount" />
+  
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" />
+  
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" />
+  
+        <button type="submit" class="create-promo-btn">Create Promotion</button>
+        <button type="button" class="update-promo-btn">Update Promotion</button>
+      </form>
+    </section>
+  
+    <section class="summary-section">
+      <h2>Ticket Management Summary</h2>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Availability</th>
+            <th>Pricing</th>
+            <th>Promotions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Event 1</td>
+            <td>Available: 50</td>
+            <td>$30</td>
+            <td>Summer Sale</td>
+          </tr>
+          <tr>
+            <td>Event 2</td>
+            <td>Available: 10</td>
+            <td>$50</td>
+            <td>Winter Offer</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  

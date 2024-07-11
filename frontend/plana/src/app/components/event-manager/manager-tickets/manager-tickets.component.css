@@ -1,0 +1,147 @@
+/* ticket-management.component.css */
+.ticket-management-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .header p {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .search-filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .filters label {
+    font-weight: bold;
+  }
+  
+  .filters select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .availability-section, .pricing-section, .promotion-section, .summary-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .availability-section h2, .pricing-section h2, .promotion-section h2, .summary-section h2 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  .availability-form, .pricing-form, .promotion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .availability-form label, .pricing-form label, .promotion-form label {
+    font-weight: bold;
+  }
+  
+  .availability-form input, .pricing-form input, .promotion-form input, .availability-form select, .pricing-form select, .promotion-form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .availability-form button, .pricing-form button, .promotion-form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .save-btn {
+    background-color: #28a745;
+  }
+  
+  .cancel-btn {
+    background-color: #dc3545;
+  }
+  
+  .update-pricing-btn {
+    background-color: #007bff;
+  }
+  
+  .cancel-pricing-btn {
+    background-color: #dc3545;
+  }
+  
+  .create-promo-btn {
+    background-color: #28a745;
+  }
+  
+  .update-promo-btn {
+    background-color: #007bff;
+  }
+  
+  .cancel-promo-btn {
+    background-color: #dc3545;
+  }
+  
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .summary-table th, .summary-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .summary-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .summary-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .summary-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  

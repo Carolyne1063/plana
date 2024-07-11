@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+table tr:nth-child(1) {
+    background-color: #FC1055;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+}
+
+table tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+table tr:last-child {
+    border-bottom: 2px solid #FC1055;
+}
+
+table tr:hover {
+    background-color: #ffe6f0;
+    cursor: pointer;
+}
+
+/* Event status specific styling */
+table td:nth-child(5) {
+    font-weight: bold;
+    color: #FC1055;
+}
+
+table td:nth-child(5):contains('Sold Out') {
+    color: #d9534f;
+}
+
+table td:nth-child(5):contains('Remaining') {
+    color: #5bc0de;
+}
