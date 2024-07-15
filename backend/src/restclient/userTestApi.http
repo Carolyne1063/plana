@@ -1,0 +1,43 @@
+### Register User
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "firstname": "AngelDelete",
+  "lastname": "Ngandi",
+  "phoneNumber": "0111997539",
+  "email": "angeldel@example.com",
+  "password": "password123"
+}
+
+### Login User 
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "manager@example.com",
+  "password": "managerpassword"
+}
+
+### Update User
+PUT http://localhost:3000/api/users/update
+Content-Type: application/json
+
+{
+  "userId": "A3944C13-999F-4949-9625-FBB0A8352DDE",
+  "firstname": "Updated Firstname",
+  "lastname": "Updated Lastname",
+  "phoneNumber": "0740837669",
+  "email": "updated@example.com",
+  "password": "password123"
+}
+
+### Delete User
+DELETE http://localhost:3000/api/users/A3944C13-999F-4949-9625-FBB0A8352DDE
+
+### Get All Users
+GET http://localhost:3000/api/users
+
+### Get User by ID
+GET http://localhost:3000/api/users/A3944C13-999F-4949-9625-FBB0A8352DDE
+

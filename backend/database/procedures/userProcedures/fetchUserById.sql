@@ -1,0 +1,7 @@
+CREATE PROCEDURE sp_GetUserById
+    @userId UNIQUEIDENTIFIER
+AS
+BEGIN
+    SELECT * FROM users WHERE userId = @userId;
+END;
+GO

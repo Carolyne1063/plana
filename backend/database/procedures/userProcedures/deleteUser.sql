@@ -1,0 +1,7 @@
+CREATE PROCEDURE sp_DeleteUser
+    @userId UNIQUEIDENTIFIER
+AS
+BEGIN
+    DELETE FROM users WHERE userId = @userId;
+END;
+GO
