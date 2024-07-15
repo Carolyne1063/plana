@@ -1,0 +1,5 @@
+CREATE PROCEDURE GetAllEvents
+AS
+BEGIN
+    SELECT * FROM events;
+END;
