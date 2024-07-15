@@ -2,6 +2,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import userRoutes from './routers/userRoutes';
 import eventRoutes from './routers/eventRoutes';
+import ticketRoutes from './routers/ticketRoutes';
+import promotionRoutes from './routers/promotionRoutes';
 // import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -17,6 +19,9 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api', eventRoutes);
+app.use('/api/tickets', ticketRoutes);
+app.use('/api/promotions', promotionRoutes);
+
 
  
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
