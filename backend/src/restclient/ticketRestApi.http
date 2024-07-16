@@ -39,3 +39,9 @@ Content-Type: application/json
 
 ### Delete a ticket
 DELETE http://localhost:3000/api/tickets/FE359227-C4A5-47C6-B03B-0F80750D56E7
+
+### Get Ticket Summary by Event ID
+GET http://localhost:3000/api/tickets/summary/D3E0BF6B-E935-40BA-98D0-4B903F601908
+Accept: application/json
+Content-Type: application/json
+

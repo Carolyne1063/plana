@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import * as ticketService from '../services/ticketService';
+import { getTicketSummaryByEventId } from '../services/ticketService';
 
 // Create a new ticket
 export const createTicket = async (req: Request, res: Response) => {
@@ -99,5 +100,20 @@ export const deleteTicket = async (req: Request, res: Response) => {
         } else {
             res.status(500).json({ message: 'An unknown error occurred' });
         }
+    }
+};
+
+export const getTicketSummary = async (req: Request, res: Response) => {
+    try {
+        const { eventId } = req.params;
+        const summary = await getTicketSummaryByEventId(eventId);
+        if (summary) {
+            res.status(200).json(summary);
+        } else {
+            res.status(404).json({ error: 'Event not found or no tickets available.' });
+        }
+    } catch (error) {
+        console.error('Error fetching ticket summary:', error);  // Log the error
+        res.status(500).json({ error: 'Error fetching ticket summary' });
     }
 };
