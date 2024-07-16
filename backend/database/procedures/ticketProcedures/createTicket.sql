@@ -1,12 +1,16 @@
 CREATE PROCEDURE CreateTicket
-    @ticketId VARCHAR(255),
+    @ticketId UNIQUEIDENTIFIER,
+    @userId UNIQUEIDENTIFIER,
     @eventId UNIQUEIDENTIFIER,
-    @userId VARCHAR(255),
     @type NVARCHAR(50),
     @numberOfTickets INT,
-    @promotionId VARCHAR(255) NULL
+    @price DECIMAL(10, 2),
+    @status NVARCHAR(50)
 AS
 BEGIN
-    INSERT INTO Tickets (ticketId, eventId, userId, type, numberOfTickets, promotionId)
-    VALUES (@ticketId, @eventId, @userId, @type, @numberOfTickets, @promotionId);
+    INSERT INTO Tickets (ticketId, userId, eventId, type, numberOfTickets, price, status)
+    VALUES (@ticketId, @userId, @eventId, @type, @numberOfTickets, @price, @status);
 END;
+
+
+DROP PROCEDURE CreateTicket;

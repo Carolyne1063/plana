@@ -1,10 +1,9 @@
 export interface Ticket {
-    ticketId: string;
-    eventId: string;
+    ticketId?: string;
     userId: string;
-    type: string;  // E.g., 'Single', 'Couple', 'Group of 5', 'VIP'
+    eventId: string;
+    type: string;
     numberOfTickets: number;
-    promotionId?: string;
-    createdAt: Date;
-    updatedAt: Date;
+    price: number;
+    status: string;
 }

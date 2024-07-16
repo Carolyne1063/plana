@@ -1,6 +1,9 @@
 CREATE PROCEDURE DeleteTicket
-    @ticketId VARCHAR(255)
+    @ticketId UNIQUEIDENTIFIER
 AS
 BEGIN
     DELETE FROM Tickets WHERE ticketId = @ticketId;
 END;
+
+
+DROP PROCEDURE DeleteTicket;

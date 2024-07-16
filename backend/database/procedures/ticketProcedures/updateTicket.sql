@@ -1,18 +1,23 @@
 CREATE PROCEDURE UpdateTicket
-    @ticketId VARCHAR(255),
+    @ticketId UNIQUEIDENTIFIER,
+    @userId UNIQUEIDENTIFIER,
     @eventId UNIQUEIDENTIFIER,
-    @userId VARCHAR(255),
     @type NVARCHAR(50),
     @numberOfTickets INT,
-    @promotionId VARCHAR(255) NULL
+    @price DECIMAL(10, 2),
+    @status NVARCHAR(50)
 AS
 BEGIN
     UPDATE Tickets
-    SET eventId = @eventId,
-        userId = @userId,
-        type = @type,
-        numberOfTickets = @numberOfTickets,
-        promotionId = @promotionId,
-        updatedAt = GETDATE()
+    SET 
+        userId = COALESCE(@userId, userId),
+        eventId = COALESCE(@eventId, eventId),
+        type = COALESCE(@type, type),
+        numberOfTickets = COALESCE(@numberOfTickets, numberOfTickets),
+        price = COALESCE(@price, price),
+        status = COALESCE(@status, status)
     WHERE ticketId = @ticketId;
 END;
+
+
+DROP PROCEDURE UpdateTicket;
