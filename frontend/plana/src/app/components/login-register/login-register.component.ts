@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/userService/user.service';// Import the UserService
 
 @Component({
   selector: 'app-login-register',
@@ -18,6 +19,7 @@ export class LoginRegisterComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private userService: UserService // Inject the UserService
   ) {
     this.registerForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(2)]],
@@ -52,8 +54,16 @@ export class LoginRegisterComponent {
 
   register(): void {
     if (this.registerForm.valid) {
-      // Handle registration logic
-      console.log('Register:', this.registerForm.value);
+      this.userService.register(this.registerForm.value).subscribe(
+        (        response: any) => {
+          console.log('Registration successful:', response);
+          // Handle successful registration (e.g., navigate to another page, show success message, etc.)
+        },
+        (        error: any) => {
+          console.error('Registration error:', error);
+          // Handle registration error (e.g., show error message)
+        }
+      );
     } else {
       console.log('Registration form is invalid');
     }
@@ -61,8 +71,16 @@ export class LoginRegisterComponent {
 
   login(): void {
     if (this.loginForm.valid) {
-      // Handle login logic
-      console.log('Login:', this.loginForm.value);
+      this.userService.login(this.loginForm.value).subscribe(
+        (        response: any) => {
+          console.log('Login successful:', response);
+          // Handle successful login (e.g., navigate to another page, save user data, etc.)
+        },
+        (        error: any) => {
+          console.error('Login error:', error);
+          // Handle login error (e.g., show error message)
+        }
+      );
     } else {
       console.log('Login form is invalid');
     }

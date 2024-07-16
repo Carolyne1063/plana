@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, provideRouter } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';

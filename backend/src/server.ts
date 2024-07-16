@@ -4,7 +4,7 @@ import userRoutes from './routers/userRoutes';
 import eventRoutes from './routers/eventRoutes';
 import ticketRoutes from './routers/ticketRoutes';
 
-// import cors from 'cors';
+import cors from 'cors';
 import dotenv from 'dotenv';
 
 
@@ -16,7 +16,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cors())
+app.use(cors())
 
 app.use('/api/users', userRoutes);
 app.use('/api', eventRoutes);

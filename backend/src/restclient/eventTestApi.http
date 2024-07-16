@@ -3,8 +3,8 @@ POST http://localhost:3000/api/events
 Content-Type: application/json
 
 {
-  "eventName": "Sample Event 3",
-  "location": "Sample Location 2",
+  "eventName": "Sample Event del",
+  "location": "Sample Location del",
   "eventDate": "2024-08-01",
   "eventTime": "12:00 PM",  
   "description": "This is a sample event description."
@@ -14,10 +14,10 @@ Content-Type: application/json
 GET http://localhost:3000/api/events
 
 ### Get Event By Id
-GET http://localhost:3000/api/events/B76FDB8C-89D0-40FB-BE25-A214C9144C1E
+GET http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
 
 ### Update Event
-PUT http://localhost:3000/api/events/B76FDB8C-89D0-40FB-BE25-A214C9144C1E
+PUT http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
 Content-Type: application/json
 
 {
@@ -29,4 +29,4 @@ Content-Type: application/json
 }
 
 ### Delete Event
-DELETE http://localhost:3000/api/events/B76FDB8C-89D0-40FB-BE25-A214C9144C1E
+DELETE http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
