@@ -2,8 +2,6 @@ import { Request, Response } from 'express';
 import { createUser, loginUser, updateUser, deleteUser, getAllUsers, getUserById } from '../services/userService';
 import { User, LoginDetails } from '../interfaces/users';
 import { v4 as uuidv4 } from 'uuid'; 
-import sql from 'mssql';
-import { sqlConfig } from '../sqlConfig';
 
 const registerUser = async (req: Request, res: Response) => {
   try {
@@ -14,9 +12,11 @@ const registerUser = async (req: Request, res: Response) => {
     await createUser(user);
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
+    console.error('Error in registerUser controller:', error);
     res.status(500).json({ error: (error as Error).message });
   }
 };
+
 
 const loginUserController = async (req: Request, res: Response) => {
   try {

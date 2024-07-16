@@ -4,27 +4,55 @@ import { User, LoginDetails } from '../interfaces/users';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid'; 
+import { sendEmail } from './mailService';
 
 const createUser = async (user: User) => {
   const userId = uuidv4();
   const hashedPassword = await bcrypt.hash(user.password, 10);
   const pool = await sql.connect(sqlConfig);
-  const request = pool.request()
-    .input('userId', sql.UniqueIdentifier, userId) 
-    .input('firstname', sql.NVarChar, user.firstname)
-    .input('lastname', sql.NVarChar, user.lastname)
-    .input('phoneNumber', sql.VarChar, user.phoneNumber)
-    .input('email', sql.NVarChar, user.email)
-    .input('password', sql.NVarChar, hashedPassword)
-    .input('createdAt', sql.DateTime, new Date());
 
-  const result = await request.query(
-    'INSERT INTO users (userId, firstname, lastname, phoneNumber, email, password, createdAt) ' +
-    'VALUES (@userId, @firstname, @lastname, @phoneNumber, @email, @password, @createdAt)'
-  );
+  try {
+    // Check if the email already exists
+    const existingUser = await pool.request()
+      .input('email', sql.NVarChar, user.email)
+      .query('SELECT * FROM users WHERE email = @email');
 
-  return result;
+    if (existingUser.recordset.length > 0) {
+      console.log(`Email ${user.email} already in use`);
+      throw new Error('Email already in use');
+    }
+
+    // Proceed with user creation
+    const request = pool.request()
+      .input('userId', sql.UniqueIdentifier, userId) 
+      .input('firstname', sql.NVarChar, user.firstname)
+      .input('lastname', sql.NVarChar, user.lastname)
+      .input('phoneNumber', sql.VarChar, user.phoneNumber)
+      .input('email', sql.NVarChar, user.email)
+      .input('password', sql.NVarChar, hashedPassword)
+      .input('createdAt', sql.DateTime, new Date());
+
+    const result = await request.query(
+      'INSERT INTO users (userId, firstname, lastname, phoneNumber, email, password, createdAt) ' +
+      'VALUES (@userId, @firstname, @lastname, @phoneNumber, @email, @password, @createdAt)'
+    );
+
+    // Send registration email
+    await sendEmail(
+      user.email,
+      'Welcome to Our Service!',
+      `Hello ${user.firstname},\n\nWelcome to our service! We're excited to have you on board.\n\nBest regards,\nThe Team`
+    );
+
+    return result;
+
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw new Error('Error creating user');
+  }
 };
+
+
 
 const getUserByEmail = async (email: string) => {
   const pool = await sql.connect(sqlConfig);
@@ -77,7 +105,7 @@ const loginUser = async (loginDetails: LoginDetails) => {
   throw new Error('Invalid email or password');
 };
 
-export const updateUser = async (userId: string | null, email: string | null, user: Partial<User>) => {
+const updateUser = async (userId: string | null, email: string | null, user: Partial<User>) => {
   if (user.password) {
     user.password = await bcrypt.hash(user.password, 10);
   }
@@ -100,7 +128,17 @@ export const updateUser = async (userId: string | null, email: string | null, us
     WHERE
       userId = COALESCE(@userId, userId) OR email = COALESCE(@email, email)
   `);
+
+  // Send update notification email
+  if (email) {
+    await sendEmail(
+      email,
+      'Your Information Was Updated',
+      `Hello,\n\nYour account information was updated successfully.\n\nBest regards,\nThe Team`
+    );
+  }
 };
+
 
 const deleteUser = async (userId: string) => {
   const pool = await sql.connect(sqlConfig);
@@ -126,6 +164,7 @@ const getUserById = async (userId: string) => {
 
 export {
   createUser,
+  updateUser,
   getUserByEmail,
   loginUser,
   deleteUser,

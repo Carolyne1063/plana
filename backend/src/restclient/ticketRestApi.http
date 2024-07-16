@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "userId": "6306F72F-3D29-4688-8365-6196A4F47F82",
   "eventId": "D3E0BF6B-E935-40BA-98D0-4B903F601908",
-  "type": "couple",
+  "type": "couple delete",
   "numberOfTickets": 2,
   "price": 100.00,
   "status": "active"
@@ -16,7 +16,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/tickets
 
 ### Get a single ticket by ID
-GET http://localhost:3000/api/tickets/
+GET http://localhost:3000/api/tickets/FFBB7DDB-A525-488C-81DF-01EB4B17697E
 
 ### Fetch Tickets by User ID
 GET http://localhost:3000/api/tickets/user/C78275A7-C952-4005-93C0-99F36EC3F813
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 
 ### Update a ticket
-PUT http://localhost:3000/api/tickets/update/
+PUT http://localhost:3000/api/tickets/update/FE359227-C4A5-47C6-B03B-0F80750D56E7
 Content-Type: application/json
 
 {
@@ -38,4 +38,4 @@ Content-Type: application/json
 }
 
 ### Delete a ticket
-DELETE http://localhost:3000/api/tickets/
+DELETE http://localhost:3000/api/tickets/FE359227-C4A5-47C6-B03B-0F80750D56E7
