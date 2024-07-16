@@ -37,6 +37,22 @@ export const getTicketById = async (ticketId: string) => {
     return result.recordset[0];
 };
 
+export const getTicketsByUserId = async (userId: string) => {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+        .input('userId', sql.UniqueIdentifier, userId)
+        .query(`EXEC GetTicketsByUserId @userId`);
+    return result.recordset;
+};
+
+export const getTicketsByEventId = async (eventId: string) => {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+        .input('eventId', sql.UniqueIdentifier, eventId)
+        .query(`EXEC GetTicketsByEventId @eventId`);
+    return result.recordset;
+};
+
 export const updateTicket = async (ticketId: string, ticketUpdates: Partial<Ticket>) => {
     const pool = await sql.connect(sqlConfig);
     const request = pool.request()

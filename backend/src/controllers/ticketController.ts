@@ -46,6 +46,34 @@ export const getTicketById = async (req: Request, res: Response) => {
     }
 };
 
+// Get tickets by user ID
+export const getTicketsByUserId = async (req: Request, res: Response) => {
+    try {
+        const tickets = await ticketService.getTicketsByUserId(req.params.userId);
+        res.status(200).json(tickets);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    }
+};
+
+// Get tickets by event ID
+export const getTicketsByEventId = async (req: Request, res: Response) => {
+    try {
+        const tickets = await ticketService.getTicketsByEventId(req.params.eventId);
+        res.status(200).json(tickets);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            res.status(500).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    }
+};
+
 // Update a specific ticket by ID
 export const updateTicket = async (req: Request, res: Response) => {
     try {
