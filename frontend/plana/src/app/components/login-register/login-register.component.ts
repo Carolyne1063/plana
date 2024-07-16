@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/userService/user.service';// Import the UserService
+import { UserService } from '../../services/userService/user.service';
 
 @Component({
   selector: 'app-login-register',
@@ -15,11 +15,15 @@ import { UserService } from '../../services/userService/user.service';// Import 
 export class LoginRegisterComponent {
   registerForm: FormGroup;
   loginForm: FormGroup;
+  registerSuccessMessage: string | null = null;
+  registerErrorMessage: string | null = null;
+  loginSuccessMessage: string | null = null;
+  loginErrorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService // Inject the UserService
+    private userService: UserService
   ) {
     this.registerForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(2)]],
@@ -55,13 +59,16 @@ export class LoginRegisterComponent {
   register(): void {
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value).subscribe(
-        (        response: any) => {
+        response => {
           console.log('Registration successful:', response);
-          // Handle successful registration (e.g., navigate to another page, show success message, etc.)
+          this.registerSuccessMessage = 'Registration successful!';
+          this.registerErrorMessage = null;
+          this.redirectUser(response.role);
         },
-        (        error: any) => {
+        error => {
           console.error('Registration error:', error);
-          // Handle registration error (e.g., show error message)
+          this.registerErrorMessage = 'Registration failed. Please try again.';
+          this.registerSuccessMessage = null;
         }
       );
     } else {
@@ -72,17 +79,30 @@ export class LoginRegisterComponent {
   login(): void {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(
-        (        response: any) => {
+        response => {
           console.log('Login successful:', response);
-          // Handle successful login (e.g., navigate to another page, save user data, etc.)
+          this.loginSuccessMessage = 'Login successful!';
+          this.loginErrorMessage = null;
+          this.redirectUser(response.role);
         },
-        (        error: any) => {
+        error => {
           console.error('Login error:', error);
-          // Handle login error (e.g., show error message)
+          this.loginErrorMessage = 'Login failed. Please try again.';
+          this.loginSuccessMessage = null;
         }
       );
     } else {
       console.log('Login form is invalid');
+    }
+  }
+
+  redirectUser(role: string): void {
+    if (role === 'admin') {
+      this.router.navigate(['/admin-dashboard']);
+    } else if (role === 'manager') {
+      this.router.navigate(['/manager']);
+    } else {
+      this.router.navigate(['/user-dashboard']);
     }
   }
 }

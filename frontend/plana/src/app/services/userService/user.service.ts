@@ -20,6 +20,7 @@ export class UserService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.apiUrl}/login`, loginDetails, { headers });
   }
+  
 
   update(userId: string, user: Partial<User>): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
