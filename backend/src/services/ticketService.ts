@@ -40,7 +40,7 @@ export const getTicketById = async (ticketId: string) => {
 export const getTicketsByUserId = async (userId: string) => {
     const pool = await sql.connect(sqlConfig);
     const result = await pool.request()
-        .input('userId', sql.UniqueIdentifier, userId)
+        .input('userId', sql.VarChar, userId)
         .query(`EXEC GetTicketsByUserId @userId`);
     return result.recordset;
 };
