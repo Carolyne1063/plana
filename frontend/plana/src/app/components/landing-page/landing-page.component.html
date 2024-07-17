@@ -19,19 +19,9 @@
         <table>
             <h1>Upcoming Events</h1>
             <br>
-            <tr>
-                <td><img src="https://i.pinimg.com/474x/f5/9d/45/f59d45b03c6c5b51be7dff40de37a744.jpg"></td>
-                <td>Music Concert<br> Uhuru Park<br> 20th July 2024</td>
-                <td><a href="/login"><button>Get Tickets</button></a></td>
-            </tr>
-            <tr>
-                <td><img src="https://i.pinimg.com/474x/23/d8/c4/23d8c45d45fc1448a6a2b74eeb4a92d4.jpg"></td>
-                <td>Cinema<br> Nyali Cinemax<br> 12th September 2024</td>
-                <td><a href="/login"><button>Get Tickets</button></a></td>
-            </tr>
-            <tr>
-                <td><img src="https://i.pinimg.com/474x/41/26/4e/41264e48966f4f0bc67f1a53ed0e893f.jpg"></td>
-                <td>Mic Cheque Meet N Greet<br> Uhuru Park<br> 14th July 2024</td>
+            <tr *ngFor="let event of events">
+                <!-- <td><img [src]="event.imageUrl" alt="Event Image"></td> -->
+                <td>{{ event.eventName }}<br>{{ event.location }}<br>{{ event.eventDate | date: 'longDate' }}</td>
                 <td><a href="/login"><button>Get Tickets</button></a></td>
             </tr>
         </table>
@@ -82,9 +72,9 @@
         <p>⭐⭐⭐⭐⭐</p>
         <div class="profiles">
             <img src="https://i.pinimg.com/474x/39/92/db/3992db3db9d4eeac0c0f24ebb1c1d3b2.jpg" alt="profile">
-        <img src="https://i.pinimg.com/736x/a1/89/dc/a189dcc2800e6a0f04002d84996b45c1.jpg" alt="profile">
-        <img src="https://i.pinimg.com/474x/e1/89/36/e18936342b0284397741376cf0330c85.jpg" alt="profile">
-        <img src="https://i.pinimg.com/474x/e4/c1/95/e4c195e69922a5b200fb8d9a95525997.jpg" alt="profile">
+            <img src="https://i.pinimg.com/736x/a1/89/dc/a189dcc2800e6a0f04002d84996b45c1.jpg" alt="profile">
+            <img src="https://i.pinimg.com/474x/e1/89/36/e18936342b0284397741376cf0330c85.jpg" alt="profile">
+            <img src="https://i.pinimg.com/474x/e4/c1/95/e4c195e69922a5b200fb8d9a95525997.jpg" alt="profile">
         </div>
     </div>
 </div>
@@ -103,5 +93,3 @@
     </div>
     <p style="display: flex; justify-content: center; align-self: center;">Created by CJS Arts | All Rights Reserved</p>
 </div>
-
-

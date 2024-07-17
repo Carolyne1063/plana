@@ -7,7 +7,7 @@ import { Event } from '../../interfaces/event';// Update the path based on your 
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'http://localhost:3000/events';  // Replace with your actual backend API URL
+  private apiUrl = 'http://localhost:3000/api/events';  // Replace with your actual backend API URL
 
   private httpOptions = {
     headers: new HttpHeaders({
