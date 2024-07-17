@@ -24,7 +24,7 @@ const createUser = async (user: User) => {
 
     // Proceed with user creation
     const request = pool.request()
-      .input('userId', sql.UniqueIdentifier, userId) 
+      .input('userId', sql.UniqueIdentifier, userId)
       .input('firstname', sql.NVarChar, user.firstname)
       .input('lastname', sql.NVarChar, user.lastname)
       .input('phoneNumber', sql.VarChar, user.phoneNumber)
@@ -47,10 +47,11 @@ const createUser = async (user: User) => {
     return result;
 
   } catch (error) {
-    console.error('Error creating user:', error);
+    console.error('Error creating user:', error); // Enhanced logging
     throw new Error('Error creating user');
   }
 };
+
 
 
 

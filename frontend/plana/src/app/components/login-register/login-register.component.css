@@ -148,17 +148,40 @@ small {
   color: red;
 }
 
-.success-message {
-  color: green;
-  font-weight: bold;
+/* app.component.css or the respective component's CSS file */
+.success-message, .error-message {
   margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.success-message {
+  font-size: 18px;
+  font-weight: bold;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
 
 .error-message {
-  color: red;
+  font-size: 18px;
   font-weight: bold;
-  margin-top: 10px;
+  color: red;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
+
+button {
+  margin-top: 20px;
+}
+
+form small {
+  color: #dc3545;
+}
+
 
 
 @keyframes show {

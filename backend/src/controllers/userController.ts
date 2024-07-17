@@ -6,16 +6,18 @@ import { v4 as uuidv4 } from 'uuid';
 const registerUser = async (req: Request, res: Response) => {
   try {
     const user: User = {
-      userId: uuidv4(), 
+      userId: uuidv4(),
       ...req.body
     };
+    console.log('Registering user:', user); // Log user data
     await createUser(user);
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
-    console.error('Error in registerUser controller:', error);
+    console.error('Error in registerUser controller:', error); // Enhanced logging
     res.status(500).json({ error: (error as Error).message });
   }
 };
+
 
 
 const loginUserController = async (req: Request, res: Response) => {

@@ -29,7 +29,6 @@ export class LoginRegisterComponent {
       firstname: ['', [Validators.required, Validators.minLength(2)]],
       lastname: ['', [Validators.required, Validators.minLength(2)]],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      address: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -63,16 +62,15 @@ export class LoginRegisterComponent {
           console.log('Registration successful:', response);
           this.registerSuccessMessage = 'Registration successful!';
           this.registerErrorMessage = null;
-          this.redirectUser(response.role);
+          this.redirectUserAfterDelay(response.role, 3000);
         },
         error => {
           console.error('Registration error:', error);
           this.registerErrorMessage = 'Registration failed. Please try again.';
           this.registerSuccessMessage = null;
+          this.clearMessagesAfterDelay(3000);
         }
       );
-    } else {
-      console.log('Registration form is invalid');
     }
   }
 
@@ -83,26 +81,43 @@ export class LoginRegisterComponent {
           console.log('Login successful:', response);
           this.loginSuccessMessage = 'Login successful!';
           this.loginErrorMessage = null;
-          this.redirectUser(response.role);
+          this.redirectUserAfterDelay(response.role, 3000);
         },
         error => {
           console.error('Login error:', error);
           this.loginErrorMessage = 'Login failed. Please try again.';
           this.loginSuccessMessage = null;
+          this.clearMessagesAfterDelay(3000);
         }
       );
-    } else {
-      console.log('Login form is invalid');
     }
   }
 
-  redirectUser(role: string): void {
-    if (role === 'admin') {
-      this.router.navigate(['/admin-dashboard']);
-    } else if (role === 'manager') {
-      this.router.navigate(['/manager']);
-    } else {
-      this.router.navigate(['/user-dashboard']);
-    }
+  redirectUserAfterDelay(role: string, delay: number): void {
+    setTimeout(() => {
+      switch (role) {
+        case 'admin':
+          this.router.navigate(['/admin-dashboard']);
+          break;
+        case 'user':
+          this.router.navigate(['/user-dashboard']);
+          break;
+        case 'manager':
+          this.router.navigate(['/manager']);
+          break;
+        default:
+          this.router.navigate(['/']);
+          break;
+      }
+    }, delay);
+  }
+
+  clearMessagesAfterDelay(delay: number): void {
+    setTimeout(() => {
+      this.registerSuccessMessage = null;
+      this.registerErrorMessage = null;
+      this.loginSuccessMessage = null;
+      this.loginErrorMessage = null;
+    }, delay);
   }
 }
