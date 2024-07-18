@@ -10,6 +10,8 @@ CREATE TABLE events (
 );
 
 ALTER TABLE Events
-ALTER COLUMN eventTime VARCHAR(50);  
+ALTER COLUMN eventTime VARCHAR(50); 
+
+ALTER TABLE events ADD image VARCHAR(255);
 
 SELECT * FROM events;

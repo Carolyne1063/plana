@@ -7,7 +7,8 @@ Content-Type: application/json
   "location": "Sample Location del",
   "eventDate": "2024-08-01",
   "eventTime": "12:00 PM",  
-  "description": "This is a sample event description."
+  "description": "This is a sample event description.",
+  "image": "https://i.pinimg.com/474x/bd/ad/7c/bdad7c93a87d4dfc82080fb299e1759b.jpg"
 }
 
 ### Get All Events
@@ -29,4 +30,4 @@ Content-Type: application/json
 }
 
 ### Delete Event
-DELETE http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
+DELETE http://localhost:3000/api/events/A46E64FC-F931-4022-AEA4-6F45DDC6085A

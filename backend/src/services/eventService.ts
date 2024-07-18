@@ -13,6 +13,7 @@ export const createEvent = async (event: Event) => {
         .input('eventDate', sql.Date, event.eventDate)
         .input('eventTime', sql.NVarChar, event.eventTime)  // Updated to NVARCHAR
         .input('description', sql.NVarChar, event.description)
+        .input('image', sql.VarChar, event.image)
         .execute('CreateEvent');
 };
 
