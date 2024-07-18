@@ -73,10 +73,14 @@ body {
   /* Darker pink on hover */
 }
 
-.events-container,
 .about-container {
   height: 100vh;
   padding: 15px;
+}
+
+.events-container{
+  height: auto;
+  padding: 20px;
 }
 
 .events-container {
