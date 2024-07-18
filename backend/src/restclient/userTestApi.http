@@ -7,7 +7,8 @@ Content-Type: application/json
   "lastname": "Martin",
   "phoneNumber": "0111997539",
   "email": "carolmartoz263@gmail.com",
-  "password": "password123"
+  "password": "password123",
+  "image": "https://i.pinimg.com/474x/be/25/7d/be257dad70a18e830f560de0887d8bd1.jpg"
 }
 
 ### Login User 
@@ -33,7 +34,7 @@ Content-Type: application/json
 }
 
 ### Delete User
-DELETE http://localhost:3000/api/users/4EB2985D-EE55-48C7-8F81-CFD2D223F65C
+DELETE http://localhost:3000/api/users/38A05F9A-3F3C-452C-8089-795B914BAFDC
 
 ### Get All Users
 GET http://localhost:3000/api/users

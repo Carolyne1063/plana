@@ -30,11 +30,12 @@ const createUser = async (user: User) => {
       .input('phoneNumber', sql.VarChar, user.phoneNumber)
       .input('email', sql.NVarChar, user.email)
       .input('password', sql.NVarChar, hashedPassword)
+      .input('image', sql.VarChar, user.image)
       .input('createdAt', sql.DateTime, new Date());
 
     const result = await request.query(
-      'INSERT INTO users (userId, firstname, lastname, phoneNumber, email, password, createdAt) ' +
-      'VALUES (@userId, @firstname, @lastname, @phoneNumber, @email, @password, @createdAt)'
+      'INSERT INTO users (userId, firstname, lastname, phoneNumber, email, password, image, createdAt) ' +
+      'VALUES (@userId, @firstname, @lastname, @phoneNumber, @email, @password, @image, @createdAt)'
     );
 
     // Send registration email
@@ -119,13 +120,15 @@ const updateUser = async (userId: string | null, email: string | null, user: Par
     .input('lastname', sql.NVarChar, user.lastname)
     .input('phoneNumber', sql.VarChar, user.phoneNumber)
     .input('password', sql.NVarChar, user.password)
+    .input('image', sql.VarChar, user.image)
 
   await request.query(`
     UPDATE users SET 
       firstname = COALESCE(@firstname, firstname),
       lastname = COALESCE(@lastname, lastname),
       phoneNumber = COALESCE(@phoneNumber, phoneNumber),
-      password = COALESCE(@password, password)
+      password = COALESCE(@password, password),
+      image = COALESCE(@image, image)
     WHERE
       userId = COALESCE(@userId, userId) OR email = COALESCE(@email, email)
   `);

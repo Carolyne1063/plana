@@ -38,4 +38,9 @@ export class UserService {
   getUserById(userId: string): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${userId}`);
   }
+
+  uploadImage(formData: FormData) {
+    return this.http.post('https://api.cloudinary.com/v1_1/dh2pi4sor/image/upload', formData);
+  }
+  
 }

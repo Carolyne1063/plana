@@ -7,3 +7,5 @@ email VARCHAR(50) UNIQUE NOT NULL,
  createdAt DATETIME NOT NULL)
 
  SELECT * FROM users;
+
+ ALTER TABLE users ADD image VARCHAR(255);
