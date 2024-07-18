@@ -1,74 +1,73 @@
 <main>
-    <input type="search" placeholder="Search">
-    <h1>Categories</h1>
-    <div class="categories">
-      <div class="category-box">
-        <i class="fa-solid fa-champagne-glasses"></i>
-        <p>Party</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-microphone"></i>
-        <p>Podcast</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-palette"></i>
-        <p>Arts & Art Gallery</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-trophy"></i>
-        <p>Competitions</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-clapperboard"></i>
-        <p>Cinema</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-music"></i>
-        <p>Music Concerts</p>
-      </div>
+  <input type="search" placeholder="Search">
+  <h1>Categories</h1>
+  <div class="categories">
+    <div class="category-box">
+      <i class="fa-solid fa-champagne-glasses"></i>
+      <p>Party</p>
     </div>
-    <div class="all-events">
-      <h1>All Events</h1>
-      <div class="events-list">
-        <div *ngFor="let event of events" class="event-card">
-          <img [src]="event.image || 'default-image-url.jpg'" alt="Event Image" class="event-image">
-          <div class="event-details">
-            <h3>{{ event.eventName }}</h3>
-            <p>Date: {{ event.eventDate | date:'fullDate' }}</p>
-            <p>Time: {{ event.eventTime }}</p>
-            <p>Location: {{ event.location }}</p>
-            <p>Description: {{ event.description }}</p>
-            <button (click)="openForm()">Get Tickets</button>
-          </div>
+    <div class="category-box">
+      <i class="fa-solid fa-microphone"></i>
+      <p>Podcast</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-palette"></i>
+      <p>Arts & Art Gallery</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-trophy"></i>
+      <p>Competitions</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-clapperboard"></i>
+      <p>Cinema</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-music"></i>
+      <p>Music Concerts</p>
+    </div>
+  </div>
+  <div class="all-events">
+    <h1>All Events</h1>
+    <div class="events-list">
+      <div *ngFor="let event of events" class="event-card">
+        <img [src]="event.image || 'default-image-url.jpg'" alt="Event Image" class="event-image">
+        <div class="event-details">
+          <h3>{{ event.eventName }}</h3>
+          <p>Date: {{ event.eventDate | date:'fullDate' }}</p>
+          <p>Time: {{ event.eventTime }}</p>
+          <p>Location: {{ event.location }}</p>
+          <p>Description: {{ event.description }}</p>
+          <button (click)="openForm(event)">Get Tickets</button>
         </div>
       </div>
     </div>
-  
-    <div id="bookingForm" class="form-popup">
-      <form class="form-container">
-        <h2>Book Tickets</h2>
-        <label for="title"><b>Event Name</b></label>
-        <input type="text" placeholder="Enter Event Name" name="title" required>
-  
-        <label for="location"><b>Location</b></label>
-        <input type="text" placeholder="Enter Location" name="location" required>
-  
-        <label for="venue"><b>Venue</b></label>
-        <input type="text" placeholder="Enter Venue" name="venue" required>
-  
-        <label for="ticketType"><b>Ticket Type</b></label>
-        <select name="ticketType" required>
-          <option value="single">Single</option>
-          <option value="couple">Couple</option>
-          <option value="group">Group of 5</option>
-        </select>
-  
-        <label for="numTickets"><b>Number of Tickets</b></label>
-        <input type="number" placeholder="Enter Number of Tickets" name="numTickets" required>
-  
-        <button type="submit" class="btn">Confirm Purchase</button>
-        <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
-      </form>
-    </div>
-  </main>
-  
+  </div>
+
+  <div id="bookingForm" class="form-popup" *ngIf="selectedEvent">
+    <form class="form-container" (ngSubmit)="onSubmit()">
+      <h2>Book Tickets</h2>
+      <label for="title"><b>Event Name</b></label>
+      <input type="text" placeholder="Enter Event Name" name="title" [value]="selectedEvent.eventName" readonly required>
+      
+      <label for="location"><b>Location</b></label>
+      <input type="text" placeholder="Enter Location" name="location" [value]="selectedEvent.location" readonly required>
+      
+      <label for="date"><b>Date</b></label>
+      <input type="text" placeholder="Enter Date" name="date" [value]="selectedEvent.eventDate | date:'fullDate'" readonly required>
+      
+      <label for="type"><b>Ticket Type</b></label>
+      <select name="type" [(ngModel)]="ticket.type" required>
+        <option value="single">Single</option>
+        <option value="couple">Couple</option>
+        <option value="group">Group of 5</option>
+      </select>
+      
+      <label for="numTickets"><b>Number of Tickets</b></label>
+      <input type="number" placeholder="Enter Number of Tickets" name="numberOfTickets" [(ngModel)]="ticket.numberOfTickets" required>
+      
+      <button type="submit" class="btn">Confirm Purchase</button>
+      <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+    </form>
+  </div>
+</main>
