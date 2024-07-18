@@ -18,16 +18,17 @@ GET http://localhost:3000/api/events
 GET http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
 
 ### Update Event
-PUT http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
+PUT http://localhost:3000/api/events/D3E0BF6B-E935-40BA-98D0-4B903F601908
 Content-Type: application/json
 
 {
-  "eventName": "Updated Event Name",
-  "location": "Updated Location",
+  "eventName": "Art Event",
+  "location": "Nairobi Gallery",
   "eventDate": "2024-08-02",
   "eventTime": "02:30 PM",  
-  "description": "This is an updated event description."
+  "description": "Art that touches the Heart",
+  "image": "https://i.pinimg.com/474x/4f/78/a2/4f78a2ac80a385cc2c40e2d633439df7.jpg"
 }
 
 ### Delete Event
-DELETE http://localhost:3000/api/events/A46E64FC-F931-4022-AEA4-6F45DDC6085A
+DELETE http://localhost:3000/api/events/D3E0BF6B-E935-40BA-98D0-4B903F601908
