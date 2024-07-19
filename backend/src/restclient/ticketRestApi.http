@@ -21,7 +21,7 @@ GET http://localhost:3000/api/tickets/user/C78275A7-C952-4005-93C0-99F36EC3F813
 Content-Type: application/json
 
 ### Fetch Tickets by Event ID
-GET http://localhost:3000/api/tickets/event/D3E0BF6B-E935-40BA-98D0-4B903F601908
+GET http://localhost:3000/api/tickets/event/CC8A18BC-9AF7-4BAA-8FE5-0507F419C0DE
 Content-Type: application/json
 
 
@@ -36,10 +36,10 @@ Content-Type: application/json
 }
 
 ### Delete a ticket
-DELETE http://localhost:3000/api/tickets/3E9F3A5F-F1B7-4414-A74A-F5DCC786F062
+DELETE http://localhost:3000/api/tickets/F35DC6BA-6FC5-4A1B-B2FB-22F67B37710D
 
 ### Get Ticket Summary by Event ID
-GET http://localhost:3000/api/tickets/summary/D3E0BF6B-E935-40BA-98D0-4B903F601908
+GET http://localhost:3000/api/tickets/summary/CC8A18BC-9AF7-4BAA-8FE5-0507F419C0DE
 Accept: application/json
 Content-Type: application/json
 

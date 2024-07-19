@@ -9,7 +9,12 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  secure: false, // use SSL
+  tls: {
+    rejectUnauthorized: false, // accept self-signed certificates
+  },
 });
+
 
 export const sendEmail = async (to: string, subject: string, text: string) => {
   try {

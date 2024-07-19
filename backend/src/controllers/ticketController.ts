@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import * as ticketService from '../services/ticketService';
-import { getTicketSummaryByEventId } from '../services/ticketService';
+import { getSummaryByEventId } from '../services/ticketService';
 
 // Create a new ticket
 export const createTicket = async (req: Request, res: Response) => {
@@ -117,7 +117,7 @@ export const deleteTicket = async (req: Request, res: Response) => {
 export const getTicketSummary = async (req: Request, res: Response) => {
     try {
         const { eventId } = req.params;
-        const summary = await getTicketSummaryByEventId(eventId);
+        const summary = await getSummaryByEventId(eventId);
         if (summary) {
             res.status(200).json(summary);
         } else {
