@@ -6,7 +6,7 @@ Content-Type: application/json
   "userId": "C78275A7-C952-4005-93C0-99F36EC3F813",
   "eventId": "CC8A18BC-9AF7-4BAA-8FE5-0507F419C0DE",
   "type": "couple",
-  "numberOfTickets": 3
+  "numberOfTickets": 8
 }
 
 
@@ -14,7 +14,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/tickets
 
 ### Get a single ticket by ID
-GET http://localhost:3000/api/tickets/FFBB7DDB-A525-488C-81DF-01EB4B17697E
+GET http://localhost:3000/api/tickets/B0AB9E21-634B-424B-8589-E3C05B0292DD
 
 ### Fetch Tickets by User ID
 GET http://localhost:3000/api/tickets/user/C78275A7-C952-4005-93C0-99F36EC3F813
@@ -26,17 +26,16 @@ Content-Type: application/json
 
 
 ### Update a ticket
-PUT http://localhost:3000/api/tickets/update/FE359227-C4A5-47C6-B03B-0F80750D56E7
+PUT http://localhost:3000/api/tickets/update/B0AB9E21-634B-424B-8589-E3C05B0292DD
 Content-Type: application/json
 
 {
   "numberOfTickets": 4,
-  "price": 180.00,
-  "status": "confirmed"
+  "status": "cancelled"
 }
 
 ### Delete a ticket
-DELETE http://localhost:3000/api/tickets/F35DC6BA-6FC5-4A1B-B2FB-22F67B37710D
+DELETE http://localhost:3000/api/tickets/2C76E144-2998-46AF-9845-AE6AF0ACDEF0
 
 ### Get Ticket Summary by Event ID
 GET http://localhost:3000/api/tickets/summary/CC8A18BC-9AF7-4BAA-8FE5-0507F419C0DE

@@ -15,14 +15,14 @@ Content-Type: application/json
 GET http://localhost:3000/api/events
 
 ### Get Event By Id
-GET http://localhost:3000/api/events/829A82E1-0C06-4038-8E85-18536747716E
+GET http://localhost:3000/api/events/0947D8CA-742E-4E28-9460-B50B983A9F27
 
 ### Update Event
-PUT http://localhost:3000/api/events/D3E0BF6B-E935-40BA-98D0-4B903F601908
+PUT http://localhost:3000/api/events/0947D8CA-742E-4E28-9460-B50B983A9F27
 Content-Type: application/json
 
 {
-  "eventName": "Art Event",
+  "eventName": "Art Event dwel",
   "location": "Nairobi Gallery",
   "eventDate": "2024-08-02",
   "eventTime": "02:30 PM",  
@@ -31,4 +31,4 @@ Content-Type: application/json
 }
 
 ### Delete Event
-DELETE http://localhost:3000/api/events/D3E0BF6B-E935-40BA-98D0-4B903F601908
+DELETE http://localhost:3000/api/events/0947D8CA-742E-4E28-9460-B50B983A9F27
