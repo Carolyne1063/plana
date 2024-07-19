@@ -4,6 +4,17 @@ import { getTicketSummaryByEventId } from '../services/ticketService';
 
 // Create a new ticket
 export const createTicket = async (req: Request, res: Response) => {
+    const { type, numberOfTickets } = req.body;
+
+    const validTypes = ['single', 'couple', 'groupOf5'];
+    if (!validTypes.includes(type)) {
+        return res.status(400).json({ message: 'Invalid ticket type' });
+    }
+
+    if (!numberOfTickets || numberOfTickets <= 0) {
+        return res.status(400).json({ message: 'Number of tickets must be a positive integer' });
+    }
+
     try {
         const ticket = await ticketService.createTicket(req.body);
         res.status(201).json(ticket);

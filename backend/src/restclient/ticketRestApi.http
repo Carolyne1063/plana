@@ -3,12 +3,10 @@ POST http://localhost:3000/api/tickets/create
 Content-Type: application/json
 
 {
-  "userId": "6306F72F-3D29-4688-8365-6196A4F47F82",
-  "eventId": "D3E0BF6B-E935-40BA-98D0-4B903F601908",
-  "type": "couple delete",
-  "numberOfTickets": 2,
-  "price": 100.00,
-  "status": "active"
+  "userId": "C78275A7-C952-4005-93C0-99F36EC3F813",
+  "eventId": "CC8A18BC-9AF7-4BAA-8FE5-0507F419C0DE",
+  "type": "couple",
+  "numberOfTickets": 3
 }
 
 
@@ -38,7 +36,7 @@ Content-Type: application/json
 }
 
 ### Delete a ticket
-DELETE http://localhost:3000/api/tickets/75112ACE-63BA-48AB-ADDE-3DDA91C2DED2
+DELETE http://localhost:3000/api/tickets/3E9F3A5F-F1B7-4414-A74A-F5DCC786F062
 
 ### Get Ticket Summary by Event ID
 GET http://localhost:3000/api/tickets/summary/D3E0BF6B-E935-40BA-98D0-4B903F601908

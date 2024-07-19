@@ -3,9 +3,34 @@ import { sqlConfig } from '../sqlConfig';
 import { v4 as uuidv4 } from 'uuid';
 import { Ticket } from '../interfaces/tickets';
 
+const ticketPrices = {
+    single: 100.00,    // example price for single ticket
+    couple: 200.00,    // example price for couple ticket
+    groupOf5: 500.00   // example price for group of 5 ticket
+};
+
 export const createTicket = async (ticket: Ticket) => {
     const ticketId = uuidv4();
     const pool = await sql.connect(sqlConfig);
+
+    // Determine the price based on the ticket type
+    let pricePerTicket;
+    switch (ticket.type) {
+        case 'single':
+            pricePerTicket = ticketPrices.single;
+            break;
+        case 'couple':
+            pricePerTicket = ticketPrices.couple;
+            break;
+        case 'groupOf5':
+            pricePerTicket = ticketPrices.groupOf5;
+            break;
+        default:
+            throw new Error('Invalid ticket type');
+    }
+
+    // Calculate the total price
+    const totalPrice = pricePerTicket * ticket.numberOfTickets;
 
     const request = pool.request()
         .input('ticketId', sql.UniqueIdentifier, ticketId)
@@ -13,8 +38,8 @@ export const createTicket = async (ticket: Ticket) => {
         .input('eventId', sql.UniqueIdentifier, ticket.eventId)
         .input('type', sql.NVarChar, ticket.type)
         .input('numberOfTickets', sql.Int, ticket.numberOfTickets)
-        .input('price', sql.Decimal(10, 2), ticket.price)
-        .input('status', sql.NVarChar, ticket.status);
+        .input('price', sql.Decimal(10, 2), totalPrice)  // Store total price
+        .input('status', sql.NVarChar, 'confirmed'); // Setting status to confirmed
 
     const result = await request.query(
         `EXEC CreateTicket @ticketId, @userId, @eventId, @type, @numberOfTickets, @price, @status`
@@ -22,6 +47,7 @@ export const createTicket = async (ticket: Ticket) => {
 
     return result;
 };
+
 
 export const getAllTickets = async () => {
     const pool = await sql.connect(sqlConfig);

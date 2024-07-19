@@ -57,15 +57,21 @@
       <input type="text" placeholder="Enter Date" name="date" [value]="selectedEvent.eventDate | date:'fullDate'" readonly required>
       
       <label for="type"><b>Ticket Type</b></label>
-      <select name="type" [(ngModel)]="ticket.type" required>
+      <select name="type" [(ngModel)]="ticket.type" (change)="updatePrices()" required>
         <option value="single">Single</option>
         <option value="couple">Couple</option>
-        <option value="group">Group of 5</option>
+        <option value="groupOf5">Group of 5</option>
       </select>
       
-      <label for="numTickets"><b>Number of Tickets</b></label>
-      <input type="number" placeholder="Enter Number of Tickets" name="numberOfTickets" [(ngModel)]="ticket.numberOfTickets" required>
+      <label for="pricePerType"><b>Price per Type</b></label>
+      <input type="text" name="pricePerType" [value]="pricePerType" readonly required>
       
+      <label for="numTickets"><b>Number of Tickets</b></label>
+      <input type="number" placeholder="Enter Number of Tickets" name="numberOfTickets" [(ngModel)]="ticket.numberOfTickets" (input)="updateTotalPrice()" required>
+      
+      <label for="totalPrice"><b>Total Price</b></label>
+      <input type="text" name="totalPrice" [value]="totalPrice" readonly required>
+
       <button type="submit" class="btn">Confirm Purchase</button>
       <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
     </form>
