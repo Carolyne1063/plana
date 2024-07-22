@@ -1,6 +1,9 @@
 export interface Ticket {
   ticketId: string;
   userId: string;
+  firstname: string;
+  lastname: string;
+  email: string;
   eventId: string;
   type: 'single' | 'couple' | 'groupOf5';
   numberOfTickets: number;
@@ -8,5 +11,6 @@ export interface Ticket {
   status: string;
   eventLocation: string; 
   eventName: string;     // Event name     // Event location
-  eventDate: Date;       // Event date
+  eventDate: Date;   
+  location: string;    // Event date
 }
