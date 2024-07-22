@@ -35,3 +35,27 @@ ul li{
     color: #FC1055;
     padding-right: 15px;
 }
+
+/* Specific Styling for User Profile Section */
+.user-profile {
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+    gap: 10px; /* Space between image and text */
+    margin: 0; /* Remove default margin */
+    padding: 10px; /* Add padding if needed */
+    font-size: 16px; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+  }
+  
+  .user-image {
+    width: 70px; /* Adjust size as needed */
+    height: 70px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Cover the image area */
+  }
+  
+  .fa-user {
+    font-size: 40px; /* Size of the default icon if no image */
+    color: #555; /* Icon color */
+  }
+  

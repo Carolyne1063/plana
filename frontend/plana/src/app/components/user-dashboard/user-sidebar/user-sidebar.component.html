@@ -1,5 +1,10 @@
 <div class="sidebar">
-    <p><i class="fa-solid fa-user"></i>UserName</p>
+    <p class="user-profile">
+        <i *ngIf="!userImage" class="fa-solid fa-user"></i>
+        <img *ngIf="userImage" [src]="userImage" alt="User Profile" class="user-image" />
+        {{ userName }}
+      </p>
+      
     <hr><hr>
     <ul>
         <br>
