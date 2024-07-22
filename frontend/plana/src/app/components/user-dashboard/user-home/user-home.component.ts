@@ -20,8 +20,13 @@ export class UserHomeComponent implements OnInit {
   ticket: Partial<Ticket> = {};
   pricePerType: number = 0;
   totalPrice: number = 0;
+  successMessage: string = ''; // Property to store success message
 
-  constructor(private eventService: EventService, private ticketService: TicketService, private authService: AuthService) {}
+  constructor(
+    private eventService: EventService,
+    private ticketService: TicketService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.getEvents();
@@ -95,7 +100,13 @@ export class UserHomeComponent implements OnInit {
     this.ticketService.createTicket(this.ticket as Ticket).subscribe(
       (response: Ticket) => {
         console.log('Ticket created successfully:', response);
-        this.closeForm();
+        this.successMessage = 'Ticket booked successfully!'; // Set success message
+        this.closeForm(); // Close the form
+
+        // Clear the success message after 5 seconds
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 5000); // 5000 milliseconds = 5 seconds
       },
       (error) => {
         console.error('Error creating ticket:', error);

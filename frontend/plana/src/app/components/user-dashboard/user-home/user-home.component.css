@@ -191,4 +191,12 @@ input[type="search"]:focus {
     background-color: #ccc;
     color: black;
   }
+
+  .success-message {
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
   

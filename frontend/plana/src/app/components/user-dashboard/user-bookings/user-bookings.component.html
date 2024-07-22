@@ -1,5 +1,6 @@
 <main>
     <h1>All Bookings</h1>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p> <!-- Display success message -->
     <table *ngIf="userTickets.length > 0; else noTickets">
         <tr>
             <th>Event Name</th>

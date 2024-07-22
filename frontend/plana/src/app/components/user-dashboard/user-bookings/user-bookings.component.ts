@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class UserBookingsComponent implements OnInit {
   userTickets: Ticket[] = [];
   userId: string | null;
+  successMessage: string = ''; // Property to store success message
 
   constructor(
     private ticketService: TicketService,
@@ -29,28 +30,27 @@ export class UserBookingsComponent implements OnInit {
     }
   }
 
- fetchUserTickets(): void {
-  this.ticketService.getTicketsByUserId(this.userId!).subscribe(
-    (tickets) => {
-      console.log('Tickets received:', tickets); // Log raw tickets
-      this.userTickets = tickets.map(ticket => ({
-        ...ticket,
-        location: ticket.eventLocation || 'Unknown' // Handle missing location
-      }));
-      console.log('Processed tickets:', this.userTickets); // Log processed tickets
-    },
-    (error) => {
-      console.error('Error fetching user tickets:', error);
-    }
-  );
-}
-
-  
+  fetchUserTickets(): void {
+    this.ticketService.getTicketsByUserId(this.userId!).subscribe(
+      (tickets) => {
+        console.log('Tickets received:', tickets); // Log raw tickets
+        this.userTickets = tickets.map(ticket => ({
+          ...ticket,
+          location: ticket.eventLocation || 'Unknown' // Handle missing location
+        }));
+        console.log('Processed tickets:', this.userTickets); // Log processed tickets
+      },
+      (error) => {
+        console.error('Error fetching user tickets:', error);
+      }
+    );
+  }
 
   cancelPurchase(ticketId: string): void {
     this.ticketService.deleteTicket(ticketId).subscribe(
       () => {
         this.userTickets = this.userTickets.filter(ticket => ticket.ticketId !== ticketId);
+        this.successMessage = 'Ticket canceled and deleted successfully!'; // Set success message
       },
       (error) => {
         console.error('Error cancelling purchase:', error);

@@ -29,6 +29,8 @@
   </div>
   <div class="all-events">
     <h1>All Events</h1>
+    <!-- Display success message -->
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
     <div class="events-list">
       <div *ngFor="let event of events" class="event-card">
         <img [src]="event.image || 'default-image-url.jpg'" alt="Event Image" class="event-image">

@@ -162,9 +162,10 @@ const getUserById = async (userId: string) => {
   const pool = await sql.connect(sqlConfig);
   const result = await pool.request()
     .input('userId', sql.UniqueIdentifier, userId)
-    .query('SELECT * FROM users WHERE userId = @userId');
+    .query('SELECT userId, firstname, lastname, phoneNumber, email, image FROM users WHERE userId = @userId');
   return result.recordset[0];
 };
+
 
 export {
   createUser,
