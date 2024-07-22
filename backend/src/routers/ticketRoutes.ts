@@ -11,5 +11,6 @@ router.get('/event/:eventId', ticketController.getTicketsByEventId);
 router.put('/update/:ticketId', ticketController.updateTicket);
 router.delete('/:ticketId', ticketController.deleteTicket);
 router.get('/summary/:eventId', ticketController.getTicketSummary);
+// router.get('/event-summaries', ticketController.getEventSummariesWithTickets);
 
 export default router;

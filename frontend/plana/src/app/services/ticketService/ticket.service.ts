@@ -42,4 +42,5 @@ export class TicketService {
   getTicketSummary(eventId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/summary/${eventId}`);
   }
+
 }

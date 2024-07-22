@@ -124,3 +124,22 @@ export const getSummaryByEventId = async (eventId: string) => {
       totalTicketsSold: summary.totalTicketsSold
     };
   };
+
+//   export const getEventSummariesWithTickets = async () => {
+//     const pool = await sql.connect(sqlConfig);
+//     // Fetch all events with tickets booked
+//     const result = await pool.request().query(`
+//         SELECT DISTINCT t.eventId
+//         FROM tickets t
+//         JOIN events e ON t.eventId = e.eventId
+//     `);
+//     const eventIds = result.recordset.map((row: { eventId: string }) => row.eventId);
+
+//     const summaries = [];
+//     for (const eventId of eventIds) {
+//         const summary = await getSummaryByEventId(eventId);
+//         summaries.push(summary);
+//     }
+
+//     return summaries;
+// };

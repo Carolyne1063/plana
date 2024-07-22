@@ -45,8 +45,9 @@ export class UserHomeComponent implements OnInit {
     );
   }
 
-  onSearch(searchTerm: string) {
-    searchTerm = searchTerm.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+  onSearch(event: any) {
+    const inputElement = event.target as HTMLInputElement;
+    const searchTerm = inputElement.value.toLowerCase();
     this.filteredEvents = this.events.filter(event =>
       event.eventName.toLowerCase().includes(searchTerm) ||
       event.description.toLowerCase().includes(searchTerm) ||

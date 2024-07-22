@@ -128,3 +128,16 @@ export const getTicketSummary = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Error fetching ticket summary' });
     }
 };
+
+// export const getEventSummariesWithTickets = async (req: Request, res: Response) => {
+//     try {
+//         const summaries = await ticketService.getEventSummariesWithTickets();
+//         res.status(200).json(summaries);
+//     } catch (error: unknown) {
+//         if (error instanceof Error) {
+//             res.status(500).json({ message: error.message });
+//         } else {
+//             res.status(500).json({ message: 'An unknown error occurred' });
+//         }
+//     }
+// };

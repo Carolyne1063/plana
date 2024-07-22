@@ -42,3 +42,8 @@ GET http://localhost:3000/api/tickets/summary/CC8A18BC-9AF7-4BAA-8FE5-0507F419C0
 Accept: application/json
 Content-Type: application/json
 
+
+# ### Test GET /api/event-summaries to fetch event summaries
+# GET http://localhost:3000/api/tickets/event-summaries
+# Content-Type: application/json
+
