@@ -3,10 +3,10 @@ POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-  "firstname": "olCar del",
-  "lastname": "Martin",
-  "phoneNumber": "0111997539",
-  "email": "carolmartoz2863@gmail.com",
+  "firstname": "Daniel",
+  "lastname": "Kitheka",
+  "phoneNumber": "0111907539",
+  "email": "gamesmy177@gmail.com",
   "password": "password123",
   "image": "https://i.pinimg.com/474x/be/25/7d/be257dad70a18e830f560de0887d8bd1.jpg"
 }
@@ -16,8 +16,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "carolmartoz2863@gmail.com",
-  "password": "password123"
+  "email": "manager@example.com",
+  "password": "managerpassword"
 }
 
 ### Update User
@@ -25,11 +25,11 @@ PUT http://localhost:3000/api/users/update
 Content-Type: application/json
 
 {
-  "userId": "561A955A-345D-4CA9-8DFC-B0C178CB92A0",
+  "userId": "6B2AA3DE-9C7C-490A-AE53-4F0E25182895",
   "firstname": "Updated Firstname",
   "lastname": "Updated Lastname",
   "phoneNumber": "0740837669",
-  "email": "carolmartoz1063@gmail.com",
+  "email": "gamesmy177@gmail.com",
   "password": "password123"
 }
 

@@ -3,9 +3,9 @@ POST http://localhost:3000/api/events
 Content-Type: application/json
 
 {
-  "eventName": "Sample Event del",
-  "location": "Sample Location del",
-  "eventDate": "2024-08-01",
+  "eventName": "Sample Event ",
+  "location": "Sample Location ",
+  "eventDate": "2024-10-01",
   "eventTime": "12:00 PM",  
   "description": "This is a sample event description.",
   "image": "https://i.pinimg.com/474x/bd/ad/7c/bdad7c93a87d4dfc82080fb299e1759b.jpg"
@@ -18,7 +18,7 @@ GET http://localhost:3000/api/events
 GET http://localhost:3000/api/events/0947D8CA-742E-4E28-9460-B50B983A9F27
 
 ### Update Event
-PUT http://localhost:3000/api/events/0947D8CA-742E-4E28-9460-B50B983A9F27
+PUT http://localhost:3000/api/events/0F088983-8F62-41EC-ABBB-052483C67BFF
 Content-Type: application/json
 
 {

@@ -6,4 +6,5 @@ export interface Ticket {
     numberOfTickets: number;
     price: number;
     status: string;
+    location: string;
 }
