@@ -16,11 +16,12 @@ import { AuthService } from '../../../services/authService/auth.service';
 })
 export class UserHomeComponent implements OnInit {
   events: Event[] = [];
+  filteredEvents: Event[] = [];
   selectedEvent: Event | null = null;
   ticket: Partial<Ticket> = {};
   pricePerType: number = 0;
   totalPrice: number = 0;
-  successMessage: string = ''; // Property to store success message
+  successMessage: string = '';
 
   constructor(
     private eventService: EventService,
@@ -36,10 +37,20 @@ export class UserHomeComponent implements OnInit {
     this.eventService.getAllEvents().subscribe(
       (data: Event[]) => {
         this.events = data;
+        this.filteredEvents = data; // Initialize filtered events
       },
       (error) => {
         console.error('Error fetching events:', error);
       }
+    );
+  }
+
+  onSearch(searchTerm: string) {
+    searchTerm = searchTerm.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+    this.filteredEvents = this.events.filter(event =>
+      event.eventName.toLowerCase().includes(searchTerm) ||
+      event.description.toLowerCase().includes(searchTerm) ||
+      event.location.toLowerCase().includes(searchTerm)
     );
   }
 
@@ -96,17 +107,16 @@ export class UserHomeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.ticket.price = this.totalPrice; // Set the total price before creating the ticket
+    this.ticket.price = this.totalPrice;
     this.ticketService.createTicket(this.ticket as Ticket).subscribe(
       (response: Ticket) => {
         console.log('Ticket created successfully:', response);
-        this.successMessage = 'Ticket booked successfully!'; // Set success message
-        this.closeForm(); // Close the form
+        this.successMessage = 'Ticket booked successfully!';
+        this.closeForm();
 
-        // Clear the success message after 5 seconds
         setTimeout(() => {
           this.successMessage = '';
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 5000);
       },
       (error) => {
         console.error('Error creating ticket:', error);
