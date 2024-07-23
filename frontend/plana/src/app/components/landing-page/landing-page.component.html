@@ -20,8 +20,8 @@
             <h1>Upcoming Events</h1>
             <br>
             <tr *ngFor="let event of events">
-                <td><img [src]="event.image" alt="Event Image"></td>
-                <td>{{ event.eventName }}<br>{{ event.location }}<br>{{ event.eventDate | date: 'longDate' }}</td>
+                <td style="display: flex; justify-content: center; padding: 5px 0px;"><img [src]="event.image" alt="Event Image"></td>
+                <td> <span class="event-name">{{ event.eventName }}</span><br><br>{{ event.location }}<br>{{ event.eventDate | date: 'longDate' }}</td>
                 <td><a href="/login"><button>Get Tickets</button></a></td>
             </tr>
         </table>

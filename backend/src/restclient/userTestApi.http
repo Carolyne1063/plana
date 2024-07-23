@@ -34,7 +34,7 @@ Content-Type: application/json
 }
 
 ### Delete User
-DELETE http://localhost:3000/api/users/561A955A-345D-4CA9-8DFC-B0C178CB92A0
+DELETE http://localhost:3000/api/users/4D5E2C59-9AD5-4F82-9731-DC6EC4A26085
 
 ### Get All Users
 GET http://localhost:3000/api/users

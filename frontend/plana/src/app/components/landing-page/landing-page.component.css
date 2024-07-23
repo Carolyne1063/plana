@@ -148,6 +148,11 @@ table p {
   font-weight: bold;
 }
 
+.event-name{
+  font-weight: bold;  /* Example styling */     /* Example styling */
+  font-size: 1.4em; 
+}
+
 .team {
   display: flex;
   flex-direction: column;
