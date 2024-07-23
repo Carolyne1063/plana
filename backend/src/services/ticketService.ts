@@ -2,6 +2,7 @@ import * as sql from 'mssql';
 import { sqlConfig } from '../sqlConfig';
 import { v4 as uuidv4 } from 'uuid';
 import { Ticket } from '../interfaces/tickets';
+import { sendEmail } from './mailService';
 
 const ticketPrices = {
     single: 100.00,    // example price for single ticket
@@ -45,8 +46,20 @@ export const createTicket = async (ticket: Ticket) => {
         `EXEC CreateTicket @ticketId, @userId, @eventId, @type, @numberOfTickets, @price, @status`
     );
 
+    // Send email notification
+    const user = await pool.request()
+        .input('userId', sql.UniqueIdentifier, ticket.userId)
+        .query('SELECT email FROM users WHERE userId = @userId');
+    
+    const email = user.recordset[0].email;
+    const subject = 'Ticket Booking Confirmation';
+    const text = `Your booking for the event has been successfully confirmed. Ticket ID: ${ticketId}`;
+    
+    await sendEmail(email, subject, text);
+
     return result;
 };
+
 
 
 export const getAllTickets = async () => {

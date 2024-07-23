@@ -117,7 +117,7 @@ export class UserHomeComponent implements OnInit {
 
         setTimeout(() => {
           this.successMessage = '';
-        }, 5000);
+        }, 2000);
       },
       (error) => {
         console.error('Error creating ticket:', error);
