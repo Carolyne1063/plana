@@ -1,28 +1,29 @@
 <main>
     <h1>All Bookings</h1>
-    <table>
+    <div *ngFor="let group of groupedTickets">
+      <h2>{{ group.eventName }}</h2>
+      <table>
         <tr>
-            <th>Event Name</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>First Name</th>
-            <th>Email</th>
-            <th>Ticket Type</th>
-            <th>Number of tickets</th>
-            <th>Status</th>
-            <th>Revenue</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Ticket Type</th>
+          <th>Number of Tickets</th>
+          <th>Status</th>
+          <th>Revenue</th>
         </tr>
-        <tr *ngFor="let ticket of tickets">
-            <td>{{ ticket.eventName }}</td>
-            <td>{{ ticket.location }}</td>
-            <td>{{ ticket.eventDate | date }}</td>
-            <td>{{ ticket.firstname }}</td>
-            <td>{{ ticket.email }}</td>
-            <td>{{ ticket.type }}</td>
-            <td>{{ ticket.numberOfTickets }}</td>
-            <td>{{ ticket.status }}</td>
-            <td>{{ ticket.price | currency }}</td>
-          </tr>
-    </table>
-    
-</main>
+        <tr *ngFor="let ticket of group.tickets">
+          <td>{{ ticket.location }}</td>
+          <td>{{ ticket.eventDate | date }}</td>
+          <td>{{ ticket.firstname }}</td>
+          <td>{{ ticket.email }}</td>
+          <td>{{ ticket.type }}</td>
+          <td>{{ ticket.numberOfTickets }}</td>
+          <td>{{ ticket.status }}</td>
+          <td>{{ ticket.price | currency }}</td>
+        </tr>
+      </table>
+    </div>
+  </main>
+  

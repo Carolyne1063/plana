@@ -8,10 +8,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './manager-bookings.component.html',
-  styleUrl: './manager-bookings.component.css'
+  styleUrls: ['./manager-bookings.component.css']
 })
-export class ManagerBookingsComponent {
-  tickets: Ticket[] = [];
+export class ManagerBookingsComponent implements OnInit {
+  groupedTickets: { eventName: string, tickets: Ticket[] }[] = [];
 
   constructor(private ticketService: TicketService) {}
 
@@ -23,12 +23,26 @@ export class ManagerBookingsComponent {
     this.ticketService.getAllTickets().subscribe(
       (data: Ticket[]) => {
         console.log('Fetched tickets:', data); // Log the fetched data
-        this.tickets = data;
+        this.groupTicketsByEvent(data);
       },
       (error) => {
         console.error('Error fetching tickets:', error);
       }
     );
   }
-  }
 
+  groupTicketsByEvent(tickets: Ticket[]) {
+    // Create a map to group tickets by event name
+    const ticketMap = new Map<string, Ticket[]>();
+
+    tickets.forEach(ticket => {
+      if (!ticketMap.has(ticket.eventName)) {
+        ticketMap.set(ticket.eventName, []);
+      }
+      ticketMap.get(ticket.eventName)?.push(ticket);
+    });
+
+    // Convert map to array and sort by event name
+    this.groupedTickets = Array.from(ticketMap, ([eventName, tickets]) => ({ eventName, tickets }));
+  }
+}
