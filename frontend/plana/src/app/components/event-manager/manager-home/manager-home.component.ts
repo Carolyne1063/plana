@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { EventService } from '../../../services/eventService/event.service'; // Update the path based on your actual location
+import { TicketService } from '../../../services/ticketService/ticket.service'; // Update the path based on your actual location
 import { Event as AppEvent } from '../../../interfaces/event'; // Update the path based on your actual location
+import { Ticket } from '../../../interfaces/ticket'; // Update the path based on your actual location
 
 @Component({
   selector: 'app-manager-home',
@@ -17,12 +19,14 @@ export class ManagerHomeComponent implements OnInit {
   eventForm: FormGroup;
   events: AppEvent[] = [];
   filteredEvents: AppEvent[] = [];
+  totalBookings = 0;
   isEditing = false;
   editingEventId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
-    private eventService: EventService
+    private eventService: EventService,
+    private ticketService: TicketService
   ) {
     this.eventForm = this.fb.group({
       eventName: ['', Validators.required],
@@ -36,6 +40,7 @@ export class ManagerHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllEvents();
+    this.getAllTickets();
   }
 
   toggleForm() {
@@ -84,6 +89,14 @@ export class ManagerHomeComponent implements OnInit {
       this.filteredEvents = events; // Initialize filteredEvents
     }, error => {
       console.error('Error fetching events:', error);
+    });
+  }
+
+  getAllTickets() {
+    this.ticketService.getAllTickets().subscribe(tickets => {
+      this.totalBookings = tickets.length;
+    }, error => {
+      console.error('Error fetching tickets:', error);
     });
   }
 
