@@ -1,6 +1,6 @@
 <main>
     <h1>All Bookings</h1>
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p> <!-- Display success message -->
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
     <table *ngIf="userTickets.length > 0; else noTickets">
         <tr>
             <th>Event Name</th>
@@ -20,12 +20,37 @@
             <td>{{ ticket.numberOfTickets }}</td>
             <td>{{ ticket.price }}</td>
             <td>{{ ticket.status }}</td>
-            <td>
-                <button (click)="cancelPurchase(ticket.ticketId)">Cancel Purchase</button>
+            <td style="display: flex; gap: 12px;">
+                <button (click)="openUpdateForm(ticket)"><i class="fa-solid fa-pen"></i></button>
+                <button (click)="cancelPurchase(ticket.ticketId)"><i class="fa-solid fa-trash-can"></i></button>
             </td>
         </tr>
     </table>
     <ng-template #noTickets>
         <p>You have no bookings.</p>
     </ng-template>
+
+    <!-- Update Ticket Form -->
+    <div *ngIf="selectedTicket">
+        <div class="overlay"></div> <!-- Background blur overlay -->
+        <div class="update-form">
+            <h2>Update Booking</h2>
+            <form (ngSubmit)="onUpdateSubmit()">
+                <label for="type">Ticket Type:</label>
+                <select [(ngModel)]="selectedTicket.type" name="type" (change)="updatePrice()">
+                    <option value="single">Single</option>
+                    <option value="couple">Couple</option>
+                    <option value="groupOf5">Group of 5</option>
+                </select>
+                <label for="numberOfTickets">Number of Tickets:</label>
+                <input type="number" [(ngModel)]="selectedTicket.numberOfTickets" name="numberOfTickets" min="1"
+                    required (input)="updatePrice()">
+                <label for="price">Price:</label>
+                <input type="text" [(ngModel)]="selectedTicket.price" name="price" readonly>
+                <button type="submit">Update Booking</button>
+                <button type="button" (click)="closeUpdateForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
 </main>
