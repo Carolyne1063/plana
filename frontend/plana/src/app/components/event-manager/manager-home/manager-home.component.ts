@@ -20,6 +20,7 @@ export class ManagerHomeComponent implements OnInit {
   events: AppEvent[] = [];
   filteredEvents: AppEvent[] = [];
   totalBookings = 0;
+  totalRevenue = 0; // Property to store total revenue
   isEditing = false;
   editingEventId: string | null = null;
 
@@ -40,9 +41,9 @@ export class ManagerHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllEvents();
-    this.getAllTickets();
+    this.getAllTickets(); // Fetch tickets to calculate bookings and revenue
   }
-
+  
   toggleForm() {
     this.showForm = !this.showForm;
     if (!this.showForm) {
@@ -95,6 +96,12 @@ export class ManagerHomeComponent implements OnInit {
   getAllTickets() {
     this.ticketService.getAllTickets().subscribe(tickets => {
       this.totalBookings = tickets.length;
+
+      // Calculate total revenue from ticket prices
+      this.totalRevenue = tickets.reduce((sum: number, ticket: Ticket) => sum + ticket.price, 0);
+
+      console.log('Total Bookings:', this.totalBookings); // Log total bookings
+      console.log('Total Revenue:', this.totalRevenue); // Log total revenue
     }, error => {
       console.error('Error fetching tickets:', error);
     });

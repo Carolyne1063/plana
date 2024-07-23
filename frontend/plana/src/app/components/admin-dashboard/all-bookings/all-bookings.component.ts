@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./all-bookings.component.css']
 })
 export class AllBookingsComponent implements OnInit {
-  events: any[] = [];  // List of events
+  events: any[] = [];  // List of unique events
   selectedEventId: string | null = null;
   summaries: any[] = [];  // Booking summaries for the selected event
 
@@ -22,15 +22,26 @@ export class AllBookingsComponent implements OnInit {
   }
 
   fetchEvents(): void {
-    // Replace with your actual method to fetch events
     this.ticketService.getAllTickets().subscribe(
-      (events) => {
-        this.events = events.map(event => ({
-          id: event.eventId,
-          name: event.eventName,
-          location: event.location,
-          date: new Date(event.eventDate).toLocaleDateString()  // Format date as needed
-        }));
+      (tickets) => {
+        // Create a map to hold unique events
+        const eventMap = new Map<string, any>();
+
+        // Iterate over tickets and add unique events to the map
+        tickets.forEach(ticket => {
+          const eventId = ticket.eventId;
+          if (!eventMap.has(eventId)) {
+            eventMap.set(eventId, {
+              id: eventId,
+              name: ticket.eventName,
+              location: ticket.location,
+              date: new Date(ticket.eventDate).toLocaleDateString()  // Format date as needed
+            });
+          }
+        });
+
+        // Convert the map values to an array and assign it to events
+        this.events = Array.from(eventMap.values());
       },
       (error) => {
         console.error('Error fetching events:', error);
@@ -55,5 +66,4 @@ export class AllBookingsComponent implements OnInit {
       }
     );
   }
-  }
-
+}
