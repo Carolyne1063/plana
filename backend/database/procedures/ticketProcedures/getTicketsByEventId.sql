@@ -11,10 +11,12 @@ BEGIN
         e.eventName AS eventName,
         e.location AS eventLocation,
         e.eventDate AS eventDate,
+        e.image AS eventImage,
         u.firstname AS firstname,
         u.lastname AS lastname,
         u.email AS userEmail,
-        u.phoneNumber AS userPhoneNumber
+        u.phoneNumber AS userPhoneNumber,
+        u.image AS userImage
     FROM Tickets t
     INNER JOIN events e ON t.eventId = e.eventId
     INNER JOIN users u ON t.userId = u.userId

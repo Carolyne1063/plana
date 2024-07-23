@@ -21,7 +21,7 @@ GET http://localhost:3000/api/tickets/user/6B2AA3DE-9C7C-490A-AE53-4F0E25182895
 Content-Type: application/json
 
 ### Fetch Tickets by Event ID
-GET http://localhost:3000/api/tickets/event/CC8A18BC-9AF7-4BAA-8FE5-0507F419C0DE
+GET http://localhost:3000/api/tickets/event/29D84029-EB9C-41EF-9E0B-71D9CCF91D24
 Content-Type: application/json
 
 
