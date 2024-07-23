@@ -1,6 +1,9 @@
 <main>
   <input type="search" placeholder="Search" (input)="onSearch($event)">
 
+  <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  
   <h1>Categories</h1>
   <div class="categories">
     <div class="category-box">
@@ -30,7 +33,6 @@
   </div>
   <div class="all-events">
     <h1>All Events</h1>
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
     <div class="events-list">
       <div *ngFor="let event of filteredEvents" class="event-card">
         <img [src]="event.image || 'default-image-url.jpg'" alt="Event Image" class="event-image">

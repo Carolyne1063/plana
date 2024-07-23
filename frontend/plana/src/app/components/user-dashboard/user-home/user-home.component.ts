@@ -22,6 +22,7 @@ export class UserHomeComponent implements OnInit {
   pricePerType: number = 0;
   totalPrice: number = 0;
   successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(
     private eventService: EventService,
@@ -109,18 +110,32 @@ export class UserHomeComponent implements OnInit {
 
   onSubmit() {
     this.ticket.price = this.totalPrice;
+    
+    // Close the form immediately
+    this.closeForm();
+    
     this.ticketService.createTicket(this.ticket as Ticket).subscribe(
       (response: Ticket) => {
         console.log('Ticket created successfully:', response);
         this.successMessage = 'Ticket booked successfully!';
-        this.closeForm();
-
+        this.errorMessage = '';
+        
         setTimeout(() => {
           this.successMessage = '';
         }, 2000);
       },
       (error) => {
-        console.error('Error creating ticket:', error);
+        if (error.error && error.error.message === 'User has already booked a ticket for this event') {
+          this.errorMessage = 'You have already booked a ticket for this event. Please update your existing ticket.';
+        } else {
+          this.errorMessage = 'An error occurred while booking the ticket. Please try again.';
+          console.error('Error creating ticket:', error);
+        }
+
+        // Set a timer to clear the error message after 2 seconds
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 3000);
       }
     );
   }

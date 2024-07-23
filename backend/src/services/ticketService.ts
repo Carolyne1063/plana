@@ -11,8 +11,19 @@ const ticketPrices = {
 };
 
 export const createTicket = async (ticket: Ticket) => {
-    const ticketId = uuidv4();
     const pool = await sql.connect(sqlConfig);
+
+    // Check if user already booked a ticket for the same event
+    const existingTickets = await pool.request()
+        .input('userId', sql.UniqueIdentifier, ticket.userId)
+        .input('eventId', sql.UniqueIdentifier, ticket.eventId)
+        .query('SELECT * FROM tickets WHERE userId = @userId AND eventId = @eventId');
+
+    if (existingTickets.recordset.length > 0) {
+        throw new Error('User has already booked a ticket for this event');
+    }
+
+    const ticketId = uuidv4();
 
     // Determine the price based on the ticket type
     let pricePerTicket;
