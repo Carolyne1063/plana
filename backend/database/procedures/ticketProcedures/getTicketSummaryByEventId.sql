@@ -1,22 +1,23 @@
--- Procedure to get ticket summary for an event
 CREATE PROCEDURE GetTicketSummaryByEventId
     @eventId UNIQUEIDENTIFIER
 AS
 BEGIN
+    -- Get event details and ticket summary
     SELECT
-        COUNT(*) AS NumberOfTickets,
-        SUM(price * numberOfTickets) AS TotalMoneyGenerated
+        e.eventName AS EventName,
+        e.location AS EventLocation,
+        e.eventDate AS EventDate,
+        COUNT(t.ticketId) AS TotalTicketsSold,
+        SUM(t.price) AS TotalRevenue
     FROM
-        Tickets
+        tickets t
+    JOIN
+        events e ON t.eventId = e.eventId
     WHERE
-        eventId = @eventId;
-
-    SELECT
-        eventName AS EventName,
-        location AS EventLocation,
-        eventDate AS EventDate
-    FROM
-        events
-    WHERE
-        eventId = @eventId;
+        t.eventId = @eventId
+    GROUP BY
+        e.eventName, e.location, e.eventDate;
 END;
+
+
+DROP PROCEDURE GetTicketSummaryByEventId;

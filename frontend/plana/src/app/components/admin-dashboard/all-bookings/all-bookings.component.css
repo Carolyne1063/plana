@@ -1,46 +1,55 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #FC1055;
+    margin-bottom: 10px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    font-family: Arial, sans-serif;
     margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
+    font-size: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-table tr:nth-child(1) {
+thead {
     background-color: #FC1055;
     color: #ffffff;
-    text-align: left;
-    font-weight: bold;
 }
 
 table th,
 table td {
     padding: 12px 15px;
-    border-bottom: 1px solid #dddddd;
-}
-
-table tr {
+    text-align: left;
     border-bottom: 1px solid #dddddd;
 }
 
 table tr:nth-child(even) {
-    background-color: #f3f3f3;
-}
-
-table tr:last-child {
-    border-bottom: 2px solid #FC1055;
+    background-color: #f9f9f9;
 }
 
 table tr:hover {
@@ -48,16 +57,31 @@ table tr:hover {
     cursor: pointer;
 }
 
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #FC1055;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #e03a6b;
+}
+
 /* Event status specific styling */
-table td:nth-child(5) {
+td:nth-child(5) {
     font-weight: bold;
     color: #FC1055;
 }
 
-table td:nth-child(5):contains('Sold Out') {
+td:nth-child(5):contains('Sold Out') {
     color: #d9534f;
 }
 
-table td:nth-child(5):contains('Remaining') {
+td:nth-child(5):contains('Remaining') {
     color: #5bc0de;
 }

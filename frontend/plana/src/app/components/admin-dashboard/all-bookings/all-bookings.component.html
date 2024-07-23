@@ -1,36 +1,47 @@
 <main>
     <h1>All Bookings</h1>
-    <table>
-        <tr>
-            <th>Event Name</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>All Bookings</th>
-            <th>Ticket Status</th>
-            <th>Revenue Generated</th>
-            <th>Event Manager</th>
-        </tr>
-        <tr>
-            <td>Music Concert</td>
-            <td>Uhuru Park</td>
-            <td>20th July 2024</td>
-            <td>6.00pm till Late</td>
-            <td>128</td>
-            <td>Sold Out</td>
-            <td>$1200</td>
-            <td>John Doe</td>
-        </tr>
-        <tr>
-            <td>Cinema</td>
-            <td>Nyali Cinemax</td>
-            <td>20th July 2024</td>
-            <td>5.00pm-7.00pm</td>
-            <td>127</td>
-            <td>3 Remaining</td>
-            <td>$1500</td>
-            <td>Janet Doe</td>
-        </tr>
-    </table>
-    
+    <div *ngIf="!selectedEventId">
+        <h2>Events</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of events" (click)="fetchSummary(event.id)">
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.location }}</td>
+                    <td>{{ event.date }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="selectedEventId">
+        <h2>Event Summary</h2>
+        <table *ngIf="summaries.length">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>All Bookings</th>
+                    <th>Revenue Generated</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let summary of summaries">
+                    <td>{{ summary.eventName }}</td>
+                    <td>{{ summary.location }}</td>
+                    <td>{{ summary.eventDate }}</td>
+                    <td>{{ summary.totalTicketsSold }}</td>
+                    <td>${{ summary.revenueGenerated.toFixed(2) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button (click)="selectedEventId = null">Back to Events</button>
+    </div>
 </main>

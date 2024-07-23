@@ -104,26 +104,27 @@ export const deleteTicket = async (ticketId: string) => {
 export const getSummaryByEventId = async (eventId: string) => {
     const pool = await sql.connect(sqlConfig);
     const request = pool.request()
-      .input('eventId', sql.UniqueIdentifier, eventId);
-  
+        .input('eventId', sql.UniqueIdentifier, eventId);
+
     const result = await request.query(
-      `SELECT e.eventName, e.location, e.eventDate, 
-              SUM(t.price) as totalRevenue, COUNT(*) as totalTicketsSold 
-       FROM tickets t
-       JOIN events e ON t.eventId = e.eventId
-       WHERE t.eventId = @eventId
-       GROUP BY e.eventName, e.location, e.eventDate`
+        `EXEC GetTicketSummaryByEventId @eventId`
     );
-  
+
     const summary = result.recordset[0];
-    return {
-      eventName: summary.name,
-      eventLocation: summary.location,
-      eventDate: summary.date,
-      totalRevenue: summary.totalRevenue,
-      totalTicketsSold: summary.totalTicketsSold
-    };
-  };
+
+    if (summary) {
+        return {
+            eventName: summary.EventName,
+            eventLocation: summary.EventLocation,
+            eventDate: summary.EventDate,
+            totalRevenue: summary.TotalRevenue,
+            totalTicketsSold: summary.TotalTicketsSold
+        };
+    } else {
+        return null;
+    }
+};
+
 
 //   export const getEventSummariesWithTickets = async () => {
 //     const pool = await sql.connect(sqlConfig);

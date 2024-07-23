@@ -129,6 +129,7 @@ export const getTicketSummary = async (req: Request, res: Response) => {
     }
 };
 
+
 // export const getEventSummariesWithTickets = async (req: Request, res: Response) => {
 //     try {
 //         const summaries = await ticketService.getEventSummariesWithTickets();
