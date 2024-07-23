@@ -2,7 +2,7 @@ CREATE PROCEDURE GetTicketSummaryByEventId
     @eventId UNIQUEIDENTIFIER
 AS
 BEGIN
-    -- Get event details and ticket summary
+    
     SELECT
         e.eventName AS EventName,
         e.location AS EventLocation,

@@ -11,7 +11,7 @@ export const createEvent = async (event: Event) => {
         .input('eventName', sql.NVarChar, event.eventName)
         .input('location', sql.NVarChar, event.location)
         .input('eventDate', sql.Date, event.eventDate)
-        .input('eventTime', sql.NVarChar, event.eventTime)  // Updated to NVARCHAR
+        .input('eventTime', sql.NVarChar, event.eventTime)  
         .input('description', sql.NVarChar, event.description)
         .input('image', sql.VarChar, event.image)
         .execute('CreateEvent');
@@ -38,7 +38,7 @@ export const updateEvent = async (eventId: string, event: Partial<Event>) => {
         .input('eventName', sql.NVarChar, event.eventName)
         .input('location', sql.NVarChar, event.location)
         .input('eventDate', sql.Date, event.eventDate)
-        .input('eventTime', sql.NVarChar, event.eventTime)  // Updated to NVARCHAR
+        .input('eventTime', sql.NVarChar, event.eventTime)  
         .input('description', sql.NVarChar, event.description)
         .execute('UpdateEvent');
 };

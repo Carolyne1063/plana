@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators'; // Import tap operator
-import { AuthService } from '../authService/auth.service'; // Adjust the path based on your file structure
+import { tap } from 'rxjs/operators'; 
+import { AuthService } from '../authService/auth.service'; 
 import { User, LoginDetails } from '../../interfaces/users';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService // Inject AuthService
+    private authService: AuthService
   ) { }
 
   register(user: User): Observable<any> {
@@ -27,7 +27,6 @@ export class UserService {
         tap((response) => {
           this.authService.setAuthToken(response.token);
           this.authService.setUserId(response.userId);
-          // Assuming you also want to set the role in AuthService
           this.authService.setUserRole(response.role);
         })
       );

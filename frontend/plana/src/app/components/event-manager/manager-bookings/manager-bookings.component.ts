@@ -22,7 +22,7 @@ export class ManagerBookingsComponent implements OnInit {
   getAllTickets() {
     this.ticketService.getAllTickets().subscribe(
       (data: Ticket[]) => {
-        console.log('Fetched tickets:', data); // Log the fetched data
+        console.log('Fetched tickets:', data); 
         this.groupTicketsByEvent(data);
       },
       (error) => {
@@ -32,7 +32,7 @@ export class ManagerBookingsComponent implements OnInit {
   }
 
   groupTicketsByEvent(tickets: Ticket[]) {
-    // Create a map to group tickets by event name
+    
     const ticketMap = new Map<string, Ticket[]>();
 
     tickets.forEach(ticket => {
@@ -42,7 +42,6 @@ export class ManagerBookingsComponent implements OnInit {
       ticketMap.get(ticket.eventName)?.push(ticket);
     });
 
-    // Convert map to array and sort by event name
     this.groupedTickets = Array.from(ticketMap, ([eventName, tickets]) => ({ eventName, tickets }));
   }
 }

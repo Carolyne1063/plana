@@ -11,10 +11,10 @@ export interface Ticket {
   price: number;
   status: string;
   eventLocation: string; 
-  eventName: string;     // Event name     // Event location
+  eventName: string;    
   eventDate: Date;   
   location: string; 
-  eventImage: string;  // Add this field
+  eventImage: string;  
     userImage: string; 
-  // Event date
+
 }

@@ -7,7 +7,6 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffe0e8;
-  /* Light pink background */
 }
 
 .hero-container {
@@ -27,15 +26,11 @@ body {
 .image img {
   width: 100%;
   max-width: 350px;
-  /* Increased max-width */
   height: auto;
   border-radius: 50%;
-  /* Circular shape */
   border: 5px solid #fc1055;
-  /* Pink border */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  /* Triangle shape example */
 }
 
 .text {
@@ -45,7 +40,6 @@ body {
 .text h1 {
   font-size: 2.5em;
   color: #fc1055;
-  /* Pink text color */
   margin-bottom: 20px;
 }
 
@@ -61,7 +55,6 @@ body {
   font-size: 1.2em;
   color: #fff;
   background-color: #fc1055;
-  /* Pink background */
   border: none;
   border-radius: 5px;
   text-decoration: none;
@@ -70,7 +63,6 @@ body {
 
 .cta-button:hover {
   background-color: #e60047;
-  /* Darker pink on hover */
 }
 
 .about-container {
@@ -149,7 +141,7 @@ table p {
 }
 
 .event-name{
-  font-weight: bold;  /* Example styling */     /* Example styling */
+  font-weight: bold; 
   font-size: 1.4em; 
 }
 

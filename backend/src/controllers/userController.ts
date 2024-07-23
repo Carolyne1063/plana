@@ -9,11 +9,11 @@ const registerUser = async (req: Request, res: Response) => {
       userId: uuidv4(),
       ...req.body
     };
-    console.log('Registering user:', user); // Log user data
+    console.log('Registering user:', user); 
     await createUser(user);
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
-    console.error('Error in registerUser controller:', error); // Enhanced logging
+    console.error('Error in registerUser controller:', error); 
     res.status(500).json({ error: (error as Error).message });
   }
 };

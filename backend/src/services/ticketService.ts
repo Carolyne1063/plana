@@ -5,9 +5,9 @@ import { Ticket } from '../interfaces/tickets';
 import { sendEmail } from './mailService';
 
 const ticketPrices = {
-    single: 100.00,    // example price for single ticket
-    couple: 200.00,    // example price for couple ticket
-    groupOf5: 500.00   // example price for group of 5 ticket
+    single: 100.00,    
+    couple: 200.00,    
+    groupOf5: 500.00   
 };
 
 export const createTicket = async (ticket: Ticket) => {
@@ -50,8 +50,8 @@ export const createTicket = async (ticket: Ticket) => {
         .input('eventId', sql.UniqueIdentifier, ticket.eventId)
         .input('type', sql.NVarChar, ticket.type)
         .input('numberOfTickets', sql.Int, ticket.numberOfTickets)
-        .input('price', sql.Decimal(10, 2), totalPrice)  // Store total price
-        .input('status', sql.NVarChar, 'confirmed'); // Setting status to confirmed
+        .input('price', sql.Decimal(10, 2), totalPrice)  
+        .input('status', sql.NVarChar, 'confirmed'); 
 
     const result = await request.query(
         `EXEC CreateTicket @ticketId, @userId, @eventId, @type, @numberOfTickets, @price, @status`
@@ -150,21 +150,3 @@ export const getSummaryByEventId = async (eventId: string) => {
 };
 
 
-//   export const getEventSummariesWithTickets = async () => {
-//     const pool = await sql.connect(sqlConfig);
-//     // Fetch all events with tickets booked
-//     const result = await pool.request().query(`
-//         SELECT DISTINCT t.eventId
-//         FROM tickets t
-//         JOIN events e ON t.eventId = e.eventId
-//     `);
-//     const eventIds = result.recordset.map((row: { eventId: string }) => row.eventId);
-
-//     const summaries = [];
-//     for (const eventId of eventIds) {
-//         const summary = await getSummaryByEventId(eventId);
-//         summaries.push(summary);
-//     }
-
-//     return summaries;
-// };

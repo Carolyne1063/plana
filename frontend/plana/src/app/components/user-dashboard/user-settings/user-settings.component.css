@@ -63,28 +63,27 @@ main {
     background-color: #e60947;
   }
   
- /* Success Message Styles */
 .alert-success {
   padding: 15px;
-  background-color: #d4edda; /* Light green background */
-  color: #155724; /* Dark green text */
-  border: 1px solid #c3e6cb; /* Light green border */
-  border-radius: 5px; /* Rounded corners */
-  margin-bottom: 20px; /* Space below the message */
-  font-size: 16px; /* Font size */
-  font-weight: 500; /* Slightly bold text */
-  display: flex; /* Flexbox for alignment */
-  align-items: center; /* Center items vertically */
+  background-color: #d4edda; 
+  color: #155724; 
+  border: 1px solid #c3e6cb; 
+  border-radius: 5px; 
+  margin-bottom: 20px; 
+  font-size: 16px; 
+  font-weight: 500; 
+  display: flex; 
+  align-items: center;
 }
 
 .alert-success::before {
-  content: "✓"; /* Success checkmark icon */
+  content: "✓"; 
   font-size: 20px; 
-  font-weight: bold;/* Size of the icon */
-  margin-right: 10px; /* Space between icon and text */
-  color: #155724; /* Icon color */
+  font-weight: bold;
+  margin-right: 10px; 
+  color: #155724; 
 }
 
 .alert-success.hide {
-  display: none; /* Hide the message when not needed */
+  display: none; 
 }

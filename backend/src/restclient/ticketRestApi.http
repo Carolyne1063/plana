@@ -43,7 +43,4 @@ Accept: application/json
 Content-Type: application/json
 
 
-# ### Test GET /api/event-summaries to fetch event summaries
-# GET http://localhost:3000/api/tickets/event-summaries
-# Content-Type: application/json
 

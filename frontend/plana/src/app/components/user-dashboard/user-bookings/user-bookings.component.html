@@ -30,9 +30,8 @@
         <p>You have no bookings.</p>
     </ng-template>
 
-    <!-- Update Ticket Form -->
     <div *ngIf="selectedTicket">
-        <div class="overlay"></div> <!-- Background blur overlay -->
+        <div class="overlay"></div> 
         <div class="update-form">
             <h2>Update Booking</h2>
             <form (ngSubmit)="onUpdateSubmit()">

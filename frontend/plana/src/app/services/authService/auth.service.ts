@@ -12,7 +12,7 @@ export class AuthService {
 
   setAuthToken(token: string): void {
     this.authToken = token;
-    localStorage.setItem('authToken', token); // Store token in localStorage
+    localStorage.setItem('authToken', token); 
   }
 
   getAuthToken(): string | null {
@@ -24,7 +24,7 @@ export class AuthService {
 
   setUserId(userId: string): void {
     this.userId = userId;
-    localStorage.setItem('userId', userId); // Store userId in localStorage
+    localStorage.setItem('userId', userId); 
   }
 
   getUserId(): string | null {

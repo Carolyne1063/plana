@@ -14,7 +14,7 @@ import { User } from '../../../interfaces/users';
 })
 export class UserSettingsComponent implements OnInit {
   userForm: FormGroup;
-  successMessage: string | null = null; // Add this line to declare the success message property
+  successMessage: string | null = null; 
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +26,7 @@ export class UserSettingsComponent implements OnInit {
       lname: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      profile: [''], // Handle the profile image URL
+      profile: [''], 
       password: ['', Validators.minLength(6)],
       confirmPassword: ['', Validators.minLength(6)]
     });
@@ -45,7 +45,7 @@ export class UserSettingsComponent implements OnInit {
           lname: user.lastname,
           phone: user.phoneNumber,
           email: user.email,
-          profile: user.image // Patch with the image URL
+          profile: user.image 
         });
       });
     } else {
@@ -63,11 +63,11 @@ export class UserSettingsComponent implements OnInit {
           phoneNumber: this.userForm.value.phone,
           email: this.userForm.value.email,
           password: this.userForm.value.password,
-          image: this.userForm.value.profile // Include the image URL
+          image: this.userForm.value.profile 
         };
         this.userService.update(userId, updatedUser).subscribe(() => {
-          this.successMessage = 'Your profile has been updated successfully!'; // Set the success message
-          setTimeout(() => this.successMessage = null, 5000); // Hide the message after 5 seconds
+          this.successMessage = 'Your profile has been updated successfully!'; 
+          setTimeout(() => this.successMessage = null, 5000); 
         });
       }
     } else {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketService } from '../../../services/ticketService/ticket.service'; // Adjust the path if needed
+import { TicketService } from '../../../services/ticketService/ticket.service'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -11,9 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./all-bookings.component.css']
 })
 export class AllBookingsComponent implements OnInit {
-  events: any[] = [];  // List of unique events
+  events: any[] = [];  
   selectedEventId: string | null = null;
-  summaries: any[] = [];  // Booking summaries for the selected event
+  summaries: any[] = [];  
 
   constructor(private ticketService: TicketService) {}
 
@@ -24,10 +24,10 @@ export class AllBookingsComponent implements OnInit {
   fetchEvents(): void {
     this.ticketService.getAllTickets().subscribe(
       (tickets) => {
-        // Create a map to hold unique events
+        
         const eventMap = new Map<string, any>();
 
-        // Iterate over tickets and add unique events to the map
+        
         tickets.forEach(ticket => {
           const eventId = ticket.eventId;
           if (!eventMap.has(eventId)) {
@@ -35,12 +35,12 @@ export class AllBookingsComponent implements OnInit {
               id: eventId,
               name: ticket.eventName,
               location: ticket.location,
-              date: new Date(ticket.eventDate).toLocaleDateString()  // Format date as needed
+              date: new Date(ticket.eventDate).toLocaleDateString()  
             });
           }
         });
 
-        // Convert the map values to an array and assign it to events
+       
         this.events = Array.from(eventMap.values());
       },
       (error) => {

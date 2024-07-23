@@ -38,7 +38,7 @@ export class UserHomeComponent implements OnInit {
     this.eventService.getAllEvents().subscribe(
       (data: Event[]) => {
         this.events = data;
-        this.filteredEvents = data; // Initialize filtered events
+        this.filteredEvents = data; 
       },
       (error) => {
         console.error('Error fetching events:', error);
@@ -72,7 +72,7 @@ export class UserHomeComponent implements OnInit {
       if (form) form.style.display = "block";
       document.body.classList.add("blur");
     } else {
-      console.error('User ID is null.'); // Handle this case as needed
+      console.error('User ID is null.'); 
     }
   }
 
@@ -131,8 +131,6 @@ export class UserHomeComponent implements OnInit {
           this.errorMessage = 'An error occurred while booking the ticket. Please try again.';
           console.error('Error creating ticket:', error);
         }
-
-        // Set a timer to clear the error message after 2 seconds
         setTimeout(() => {
           this.errorMessage = '';
         }, 3000);

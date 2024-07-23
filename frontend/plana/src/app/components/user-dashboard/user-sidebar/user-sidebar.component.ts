@@ -14,8 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class UserSidebarComponent {
   @Output() selectSection = new EventEmitter<string>();
-  userImage?: string; // This will hold the user's profile image URL
-  userName: string = 'UserName'; // Default value, will be updated
+  userImage?: string; 
+  userName: string = 'UserName'; 
 
   constructor(
     private authService: AuthService,
@@ -34,8 +34,8 @@ export class UserSidebarComponent {
     const userId = this.authService.getUserId();
     if (userId) {
       this.userService.getUserById(userId).subscribe(user => {
-        this.userImage = user.image || ''; // Set user image URL or leave empty
-        this.userName = user.firstname || 'UserName'; // Set user first name or default to 'UserName'
+        this.userImage = user.image || ''; 
+        this.userName = user.firstname || 'UserName'; 
       });
     } else {
       console.error('User ID is null');

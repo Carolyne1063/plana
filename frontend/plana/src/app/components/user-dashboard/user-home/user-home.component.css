@@ -136,9 +136,9 @@ input[type="search"]:focus {
     transform: translate(-50%, -50%);
     border: 3px solid #f1f1f1;
     z-index: 9;
-    max-width: 90%;  /* Ensure it doesn't overflow horizontally */
-    max-height: 90%; /* Ensure it doesn't overflow vertically */
-    overflow-y: auto; /* Add scroll if content overflows */
+    max-width: 90%;  
+    max-height: 90%; 
+    overflow-y: auto; 
   }
   
   .form-container {

@@ -15,13 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class UserBookingsComponent implements OnInit {
   userTickets: Ticket[] = [];
   userId: string | null;
-  successMessage: string = ''; // Property to store success message
-  selectedTicket: Partial<Ticket> | null = null; // Property to store the ticket being updated
+  successMessage: string = ''; 
+  selectedTicket: Partial<Ticket> | null = null; 
 
   private ticketPrices = {
-    single: 100.00,    // example price for single ticket
-    couple: 200.00,    // example price for couple ticket
-    groupOf5: 500.00   // example price for group of 5 ticket
+    single: 100.00,   
+    couple: 200.00,    
+    groupOf5: 500.00   
   };
 
   constructor(
@@ -40,12 +40,12 @@ export class UserBookingsComponent implements OnInit {
   fetchUserTickets(): void {
     this.ticketService.getTicketsByUserId(this.userId!).subscribe(
       (tickets) => {
-        console.log('Tickets received:', tickets); // Log raw tickets
+        console.log('Tickets received:', tickets); 
         this.userTickets = tickets.map(ticket => ({
           ...ticket,
-          location: ticket.eventLocation || 'Unknown' // Handle missing location
+          location: ticket.eventLocation || 'Unknown' 
         }));
-        console.log('Processed tickets:', this.userTickets); // Log processed tickets
+        console.log('Processed tickets:', this.userTickets); 
       },
       (error) => {
         console.error('Error fetching user tickets:', error);
@@ -57,7 +57,7 @@ export class UserBookingsComponent implements OnInit {
     this.ticketService.deleteTicket(ticketId).subscribe(
       () => {
         this.userTickets = this.userTickets.filter(ticket => ticket.ticketId !== ticketId);
-        this.successMessage = 'Ticket canceled and deleted successfully!'; // Set success message
+        this.successMessage = 'Ticket canceled and deleted successfully!'; 
         setTimeout(() => {
           this.successMessage = '';
         }, 2000);
@@ -69,8 +69,8 @@ export class UserBookingsComponent implements OnInit {
   }
 
   openUpdateForm(ticket: Ticket): void {
-    this.selectedTicket = { ...ticket }; // Create a copy of the ticket to be updated
-    this.updatePrice(); // Set initial price based on current ticket details
+    this.selectedTicket = { ...ticket }; 
+    this.updatePrice(); 
   }
 
   closeUpdateForm(): void {
@@ -93,12 +93,12 @@ export class UserBookingsComponent implements OnInit {
         price: this.selectedTicket.price
       }).subscribe(
         () => {
-          this.successMessage = 'Ticket updated successfully!'; // Set success message
+          this.successMessage = 'Ticket updated successfully!'; 
           setTimeout(() => {
             this.successMessage = '';
           }, 2000);
-          this.fetchUserTickets(); // Refresh the tickets list
-          this.closeUpdateForm(); // Close the update form
+          this.fetchUserTickets(); 
+          this.closeUpdateForm(); 
         },
         (error) => {
           console.error('Error updating ticket:', error);

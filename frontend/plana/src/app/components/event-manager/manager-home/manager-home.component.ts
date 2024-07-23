@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { EventService } from '../../../services/eventService/event.service'; // Update the path based on your actual location
-import { TicketService } from '../../../services/ticketService/ticket.service'; // Update the path based on your actual location
-import { Event as AppEvent } from '../../../interfaces/event'; // Update the path based on your actual location
-import { Ticket } from '../../../interfaces/ticket'; // Update the path based on your actual location
+import { EventService } from '../../../services/eventService/event.service'; 
+import { TicketService } from '../../../services/ticketService/ticket.service'; 
+import { Event as AppEvent } from '../../../interfaces/event'; 
+import { Ticket } from '../../../interfaces/ticket';
 
 @Component({
   selector: 'app-manager-home',
@@ -20,7 +20,7 @@ export class ManagerHomeComponent implements OnInit {
   events: AppEvent[] = [];
   filteredEvents: AppEvent[] = [];
   totalBookings = 0;
-  totalRevenue = 0; // Property to store total revenue
+  totalRevenue = 0; 
   isEditing = false;
   editingEventId: string | null = null;
 
@@ -41,7 +41,7 @@ export class ManagerHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllEvents();
-    this.getAllTickets(); // Fetch tickets to calculate bookings and revenue
+    this.getAllTickets(); 
   }
   
   toggleForm() {
@@ -87,7 +87,7 @@ export class ManagerHomeComponent implements OnInit {
   getAllEvents() {
     this.eventService.getAllEvents().subscribe(events => {
       this.events = events;
-      this.filteredEvents = events; // Initialize filteredEvents
+      this.filteredEvents = events; 
     }, error => {
       console.error('Error fetching events:', error);
     });
@@ -100,8 +100,8 @@ export class ManagerHomeComponent implements OnInit {
       // Calculate total revenue from ticket prices
       this.totalRevenue = tickets.reduce((sum: number, ticket: Ticket) => sum + ticket.price, 0);
 
-      console.log('Total Bookings:', this.totalBookings); // Log total bookings
-      console.log('Total Revenue:', this.totalRevenue); // Log total revenue
+      console.log('Total Bookings:', this.totalBookings); 
+      console.log('Total Revenue:', this.totalRevenue); 
     }, error => {
       console.error('Error fetching tickets:', error);
     });

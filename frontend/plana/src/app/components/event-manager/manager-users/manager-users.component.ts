@@ -27,7 +27,7 @@ export class ManagerUsersComponent implements OnInit {
     this.ticketService.getAllTickets().subscribe(
       (tickets: Ticket[]) => {
         this.events = this.extractEventsFromTickets(tickets);
-        console.log(this.events); // Log events to check data
+        console.log(this.events); 
       },
       (error) => {
         console.error('Error fetching tickets:', error);

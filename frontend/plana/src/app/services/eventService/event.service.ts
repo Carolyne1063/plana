@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Event } from '../../interfaces/event';// Update the path based on your actual location
+import { Event } from '../../interfaces/event';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'http://localhost:3000/api/events';  // Replace with your actual backend API URL
+  private apiUrl = 'http://localhost:3000/api/events';
 
   private httpOptions = {
     headers: new HttpHeaders({

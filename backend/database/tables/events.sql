@@ -14,4 +14,8 @@ ALTER COLUMN eventTime VARCHAR(50);
 
 ALTER TABLE events ADD image VARCHAR(255);
 
+ALTER TABLE events DROP COLUMN totalTickets;
+
 SELECT * FROM events;
+
+

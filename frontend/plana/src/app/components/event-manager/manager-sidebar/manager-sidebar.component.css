@@ -13,13 +13,13 @@
 .sidebar p{
     font-size: 20px;
     font-weight: bold;
-    padding: 30px;
+    padding: 40px;
     margin-top: 10px;
 }
 
 ul li{
     list-style-type: none;
-    padding: 20px;
+    padding: 30px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
