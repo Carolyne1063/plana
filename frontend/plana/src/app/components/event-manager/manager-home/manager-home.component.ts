@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { EventService } from '../../../services/eventService/event.service'; // Update the path based on your actual location
-import { Event } from '../../../interfaces/event'; // Update the path based on your actual location
+import { Event as AppEvent } from '../../../interfaces/event'; // Update the path based on your actual location
 
 @Component({
   selector: 'app-manager-home',
@@ -15,7 +15,8 @@ import { Event } from '../../../interfaces/event'; // Update the path based on y
 export class ManagerHomeComponent implements OnInit {
   showForm = false;
   eventForm: FormGroup;
-  events: Event[] = [];
+  events: AppEvent[] = [];
+  filteredEvents: AppEvent[] = [];
   isEditing = false;
   editingEventId: string | null = null;
 
@@ -56,7 +57,7 @@ export class ManagerHomeComponent implements OnInit {
 
   createEvent() {
     if (this.eventForm.valid) {
-      const newEvent: Event = this.eventForm.value;
+      const newEvent: AppEvent = this.eventForm.value;
       if (this.isEditing && this.editingEventId) {
         this.eventService.updateEvent(this.editingEventId, newEvent).subscribe(() => {
           console.log('Event Updated:', newEvent);
@@ -80,12 +81,13 @@ export class ManagerHomeComponent implements OnInit {
   getAllEvents() {
     this.eventService.getAllEvents().subscribe(events => {
       this.events = events;
+      this.filteredEvents = events; // Initialize filteredEvents
     }, error => {
       console.error('Error fetching events:', error);
     });
   }
 
-  editEvent(event: Event) {
+  editEvent(event: AppEvent) {
     this.isEditing = true;
     this.editingEventId = event.eventId || null;
     this.eventForm.patchValue({
@@ -108,5 +110,17 @@ export class ManagerHomeComponent implements OnInit {
         console.error('Error deleting event:', error);
       });
     }
+  }
+
+  onSearchTermChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const searchTerm = target?.value.toLowerCase();
+    this.filteredEvents = this.events.filter(event =>
+      event.eventName.toLowerCase().includes(searchTerm) ||
+      event.location.toLowerCase().includes(searchTerm) ||
+      event.description.toLowerCase().includes(searchTerm)
+    );
+    console.log('Search term:', searchTerm);
+    console.log('Filtered events:', this.filteredEvents);
   }
 }

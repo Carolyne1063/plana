@@ -1,94 +1,107 @@
 <main>
-    <input type="search" placeholder="Search">
-    <div class="statistics-container">
-      <div class="eventsStat">
-        <p class="stat-number">{{events.length}}</p>
-        <p class="stat-label">Events</p>
-      </div>
-      <div class="bookingsStat">
-        <p class="stat-number">12</p>
-        <p class="stat-label">Bookings</p>
-      </div>
-      <div class="revenueStats">
-        <p class="stat-number">$1200</p>
-        <p class="stat-label">Revenue Collected</p>
-      </div>
+  <input
+    type="search"
+    placeholder="Search"
+    (input)="onSearchTermChange($event)"
+  />
+  <div class="statistics-container">
+    <div class="eventsStat">
+      <p class="stat-number">{{ events.length }}</p>
+      <p class="stat-label">Events</p>
     </div>
-  
-    <button class="createbtn" (click)="toggleForm()">Create New Event</button>
-  
-    <div *ngIf="showForm" class="form-popup">
-      <div class="form-container">
-        <h2>{{ isEditing ? 'Update Event' : 'Create Event' }}</h2>
-        <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
-          <label for="eventName">Event Name</label>
-          <input type="text" id="eventName" formControlName="eventName" required>
-  
-          <label for="location">Location</label>
-          <input type="text" id="location" formControlName="location" required>
-  
-          <label for="eventTime">Time</label>
-          <input type="text" id="eventTime" formControlName="eventTime" required>
-  
-          <label for="eventDate">Date</label>
-          <input type="date" id="eventDate" formControlName="eventDate" required>
-  
-          <label for="description">Description</label>
-          <input type="text" id="description" formControlName="description" required>
-  
-          <label for="image">Image</label>
-          <input type="text" id="image" formControlName="image" required>
-  
-          <button type="submit" class="btn">{{ isEditing ? 'Update Event' : 'Create Event' }}</button>
-          <button type="button" class="btn cancel" (click)="toggleForm()">Cancel</button>
-        </form>
-      </div>
+    <div class="bookingsStat">
+      <p class="stat-number">12</p>
+      <p class="stat-label">Bookings</p>
     </div>
-  
-    <h1>Categories</h1>
-    <div class="categories">
-      <div class="category-box">
-        <i class="fa-solid fa-champagne-glasses"></i>
-        <p>Party</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-microphone"></i>
-        <p>Podcast</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-palette"></i>
-        <p>Arts & Art Gallery</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-trophy"></i>
-        <p>Competitions</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-clapperboard"></i>
-        <p>Cinema</p>
-      </div>
-      <div class="category-box">
-        <i class="fa-solid fa-music"></i>
-        <p>Music Concerts</p>
-      </div>
+    <div class="revenueStats">
+      <p class="stat-number">$1200</p>
+      <p class="stat-label">Revenue Collected</p>
     </div>
-  
-    <div class="all-events">
-      <h1>All Events</h1>
-      <div class="events-list">
-        <div *ngFor="let event of events" class="event-card">
-          <img [src]="event.image" alt="Event Image" class="event-image">
-          <div class="event-details">
-            <h3>{{ event.eventName }}</h3>
-            <p>Date: {{ event.eventDate | date }}</p>
-            <p>Time: {{ event.eventTime }}</p>
-            <p>Location: {{ event.location }}</p>
-            <p>Description: {{ event.description }}</p>
-            <button (click)="editEvent(event)">Update</button>
-            <button (click)="deleteEvent(event.eventId)">Delete</button>
-          </div>
+  </div>
+
+  <button class="createbtn" (click)="toggleForm()">Create New Event</button>
+
+  <div *ngIf="showForm" class="form-popup">
+    <div class="form-container">
+      <h2>{{ isEditing ? 'Update Event' : 'Create Event' }}</h2>
+      <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
+        <label for="eventName">Event Name</label>
+        <input
+          type="text"
+          id="eventName"
+          formControlName="eventName"
+          required
+        />
+
+        <label for="location">Location</label>
+        <input type="text" id="location" formControlName="location" required />
+
+        <label for="eventTime">Time</label>
+        <input type="text" id="eventTime" formControlName="eventTime" required />
+
+        <label for="eventDate">Date</label>
+        <input type="date" id="eventDate" formControlName="eventDate" required />
+
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          formControlName="description"
+          required
+        />
+
+        <label for="image">Image</label>
+        <input type="text" id="image" formControlName="image" required />
+
+        <button type="submit" class="btn">{{ isEditing ? 'Update Event' : 'Create Event' }}</button>
+        <button type="button" class="btn cancel" (click)="toggleForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <h1>Categories</h1>
+  <div class="categories">
+    <div class="category-box">
+      <i class="fa-solid fa-champagne-glasses"></i>
+      <p>Party</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-microphone"></i>
+      <p>Podcast</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-palette"></i>
+      <p>Arts & Art Gallery</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-trophy"></i>
+      <p>Competitions</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-clapperboard"></i>
+      <p>Cinema</p>
+    </div>
+    <div class="category-box">
+      <i class="fa-solid fa-music"></i>
+      <p>Music Concerts</p>
+    </div>
+  </div>
+
+  <div class="all-events">
+    <h1>All Events</h1>
+    <div class="events-list">
+      <div *ngFor="let event of filteredEvents" class="event-card">
+        <img [src]="event.image" alt="Event Image" class="event-image" />
+        <div class="event-details">
+          <h3>{{ event.eventName }}</h3>
+          <p>Date: {{ event.eventDate | date }}</p>
+          <p>Time: {{ event.eventTime }}</p>
+          <p>Location: {{ event.location }}</p>
+          <p>Description: {{ event.description }}</p>
+          <button (click)="editEvent(event)">Update</button>
+          <button (click)="deleteEvent(event.eventId)">Delete</button>
         </div>
       </div>
     </div>
-  </main>
-  
+  </div>
+</main>
