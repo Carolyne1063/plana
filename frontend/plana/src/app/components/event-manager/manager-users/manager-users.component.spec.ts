@@ -1,23 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ManagerUsersComponent } from './manager-users.component';
+import { TestBed } from '@angular/core/testing';
+import { ManagerUsersComponent } from './manager-users.component';  
 
 describe('ManagerUsersComponent', () => {
-  let component: ManagerUsersComponent;
-  let fixture: ComponentFixture<ManagerUsersComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ManagerUsersComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ManagerUsersComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [ManagerUsersComponent],  
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(ManagerUsersComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

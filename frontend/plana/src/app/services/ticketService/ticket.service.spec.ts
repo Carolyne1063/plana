@@ -40,7 +40,7 @@ describe('TicketService', () => {
       status: '',
       eventLocation: '',
       eventName: '',
-      eventDate: new Date(), // Provide a valid Date
+      eventDate: new Date(), 
       location: '',
       eventImage: '',
       userImage: ''
@@ -65,7 +65,7 @@ describe('TicketService', () => {
         status: '',
         eventLocation: '',
         eventName: '',
-        eventDate: new Date(), // Provide a valid Date
+        eventDate: new Date(), 
         location: '',
         eventImage: '',
         userImage: ''
@@ -77,7 +77,7 @@ describe('TicketService', () => {
         status: '',
         eventLocation: '',
         eventName: '',
-        eventDate: new Date(), // Provide a valid Date
+        eventDate: new Date(), 
         location: '',
         eventImage: '',
         userImage: ''
@@ -109,7 +109,7 @@ describe('TicketService', () => {
       status: '',
       eventLocation: '',
       eventName: '',
-      eventDate: new Date(), // Provide a valid Date
+      eventDate: new Date(), 
       location: '',
       eventImage: '',
       userImage: ''
@@ -134,7 +134,7 @@ describe('TicketService', () => {
         status: '',
         eventLocation: '',
         eventName: '',
-        eventDate: new Date(), // Provide a valid Date
+        eventDate: new Date(), 
         location: '',
         eventImage: '',
         userImage: ''
@@ -146,7 +146,7 @@ describe('TicketService', () => {
         status: '',
         eventLocation: '',
         eventName: '',
-        eventDate: new Date(), // Provide a valid Date
+        eventDate: new Date(),
         location: '',
         eventImage: '',
         userImage: ''
@@ -172,7 +172,7 @@ describe('TicketService', () => {
         status: '',
         eventLocation: '',
         eventName: '',
-        eventDate: new Date(), // Provide a valid Date
+        eventDate: new Date(), 
         location: '',
         eventImage: '',
         userImage: ''
@@ -184,7 +184,7 @@ describe('TicketService', () => {
         status: '',
         eventLocation: '',
         eventName: '',
-        eventDate: new Date(), // Provide a valid Date
+        eventDate: new Date(), 
         location: '',
         eventImage: '',
         userImage: ''
@@ -205,26 +205,26 @@ describe('TicketService', () => {
     const dummyTicketUpdate: Partial<Ticket> = { price: 55 };
   
     service.updateTicket(ticketId, dummyTicketUpdate).subscribe(() => {
-      // No response to assert since the method returns void
-      expect(true).toBeTrue(); // Just to ensure the observable completes
+     
+      expect(true).toBeTrue(); 
     });
   
     const req = httpMock.expectOne(`${service['apiUrl']}/update/${ticketId}`);
     expect(req.request.method).toBe('PUT');
-    req.flush({}); // Return an empty response to match void
+    req.flush({}); 
   });
   
   it('should delete a ticket', () => {
     const ticketId = '1';
   
     service.deleteTicket(ticketId).subscribe(() => {
-      // No response to assert since the method returns void
-      expect(true).toBeTrue(); // Just to ensure the observable completes
+      
+      expect(true).toBeTrue(); 
     });
   
     const req = httpMock.expectOne(`${service['apiUrl']}/${ticketId}`);
     expect(req.request.method).toBe('DELETE');
-    req.flush({}); // Return an empty response to match void
+    req.flush({}); 
   });
   
 

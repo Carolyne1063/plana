@@ -44,7 +44,7 @@ describe('UserService', () => {
       image: 'image.jpg',
       createdAt: '2024-01-01T00:00:00.000Z'
     };
-    const dummyResponse = { /* response data */ };
+    const dummyResponse = { };
 
     service.register(dummyUser).subscribe(response => {
       expect(response).toEqual(dummyResponse);
@@ -99,7 +99,7 @@ describe('UserService', () => {
   });
 
   it('should fetch all users', () => {
-    const dummyUsers: User[] = [/* array of users */];
+    const dummyUsers: User[] = [];
 
     service.getAllUsers().subscribe(users => {
       expect(users).toEqual(dummyUsers);

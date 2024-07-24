@@ -35,7 +35,7 @@ describe('EventService', () => {
       eventTime: '',
       image: ''
     };
-    const dummyResponse = { /* response data */ };
+    const dummyResponse = {};
 
     service.createEvent(dummyEvent).subscribe(response => {
       expect(response).toEqual(dummyResponse);

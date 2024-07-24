@@ -23,6 +23,7 @@ export class UserHomeComponent implements OnInit {
   totalPrice: number = 0;
   successMessage: string = '';
   errorMessage: string = '';
+  component!: { eventId: string; eventName: string; description: string; location: string; };
 
   constructor(
     private eventService: EventService,
